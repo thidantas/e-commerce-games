@@ -23,7 +23,8 @@ export default defineConfig([
       'eslint:recommended',
       'plugin:@typescript-eslint/recommended',
       'plugin:react/recommended',
-      'prettier'
+      'prettier',
+      'plugin:storybook/recommended'
     ),
 
     plugins: {
@@ -47,6 +48,8 @@ export default defineConfig([
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off'
-    }
+    },
+
+    ignores: ['.storybook', '.jest']
   }
 ])
