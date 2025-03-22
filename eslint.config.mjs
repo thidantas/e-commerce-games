@@ -50,6 +50,6 @@ export default defineConfig([
       '@typescript-eslint/explicit-module-boundary-types': 'off'
     },
 
-    ignores: ['.storybook', '.jest']
+    ignores: ['.storybook', '.jest', 'generators']
   }
 ])
