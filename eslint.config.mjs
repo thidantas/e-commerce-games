@@ -60,7 +60,8 @@ export default defineConfig([
           allowLiteral: true,
           allowObject: true
         }
-      ]
+      ],
+      '@typescript-eslint/no-unused-vars': 'warn'
     },
 
     ignores: ['.storybook', '.jest', 'generators']
