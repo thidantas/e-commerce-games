@@ -13,12 +13,19 @@ export default {
         type: 'select'
       },
       options: ['white', 'black']
+    },
+    lineLeft: {
+      type: 'boolean'
+    },
+    lineBottom: {
+      type: 'boolean'
     }
   },
   args: {
     children: 'Most Popular',
-    color: 'black',
-    lineLeft: false
+    color: 'white',
+    lineLeft: false,
+    lineBottom: false
   }
 } as Meta
 
