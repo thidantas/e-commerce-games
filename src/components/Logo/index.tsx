@@ -6,11 +6,11 @@ export type LogoProps = {
   hideOnMobile?: boolean
 }
 
-const Logo: React.FC<LogoProps> = ({
+const Logo = ({
   color = 'white',
   size = 'normal',
   hideOnMobile = false
-}) => (
+}: LogoProps) => (
   <S.Wrapper color={color} size={size} hideOnMobile={hideOnMobile}>
     <svg fill="none" viewBox="0 0 158 48" aria-label="Won Games">
       <path
