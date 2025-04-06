@@ -1,17 +1,34 @@
 import { Meta, StoryFn } from '@storybook/react'
 
-import Button from '.'
+import { AddShoppingCart } from '@styled-icons/material-outlined/AddShoppingCart'
+import Button, { ButtonProps } from '.'
 
 export default {
   title: 'components/Button',
   component: Button,
-  args: {
-    children: 'string'
+  argsTypes: {
+    children: {
+      type: 'string'
+    },
+    icon: {
+      type: ''
+    }
   }
 } as Meta
 
-export const Default: StoryFn = (args) => <Button {...args} />
+export const Default: StoryFn<ButtonProps> = (args) => <Button {...args} />
 
 Default.args = {
-  children: 'Buy Now'
+  size: 'medium',
+  children: 'Buy Now',
+  fullWidth: false
+}
+
+export const WithIcon: StoryFn<ButtonProps> = (args) => <Button {...args} />
+
+WithIcon.args = {
+  size: 'small',
+  icon: <AddShoppingCart />,
+  children: 'Buy Now',
+  fullWidth: false
 }
