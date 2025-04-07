@@ -9,6 +9,7 @@ export const Wrapper = styled.menu`
     position: relative;
   `}
 `
+
 export const LogoWrapper = styled.div`
   ${media.lessThan('medium')`
     position: absolute;
@@ -31,17 +32,26 @@ export const MenuGroup = styled.div`
     display: flex;
     flex-grow: 1;
     justify-content: flex-end;
+    align-items: center;
 
     > div {
       margin-left: ${theme.spacings.xsmall};
     }
   `}
 `
-export const MenuNav = styled.nav``
+
+export const MenuNav = styled.nav`
+  ${({ theme }) => css`
+    ${media.greaterThan('medium')`
+			margin-left: ${theme.spacings.small};
+		`}
+  `}
+`
 
 export const MenuLink = styled.a`
   ${({ theme }) => css`
     position: relative;
+    color: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
     margin: 0.3rem ${theme.spacings.small};
     text-decoration: none;
