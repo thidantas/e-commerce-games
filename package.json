@@ -21,6 +21,7 @@
     "react-dom": "^19.1.0",
     "styled-components": "^5.3.11",
     "styled-media-query": "^2.1.2",
+    "@styled-icons/remix-fill": "^10.46.0",
     "@styled-icons/material-outlined": "^10.47.0"
   },
   "devDependencies": {
