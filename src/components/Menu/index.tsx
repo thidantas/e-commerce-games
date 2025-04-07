@@ -4,10 +4,16 @@ import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outline
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
 import { Close as CloseIcon } from '@styled-icons/material-outlined'
 
+import Button from '../Button'
 import Logo from '../Logo'
 import * as S from './styles'
 
-const Menu = () => {
+export type MenuProps = {
+  username?: string
+  fullMenuTestId?: string
+}
+
+const Menu = ({ username, fullMenuTestId }: MenuProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -27,8 +33,35 @@ const Menu = () => {
         </S.IconWrapper>
       </S.MenuGroup>
 
-      <S.MenuFull aria-hidden={!isOpen} isOpen={isOpen}>
+      <S.MenuFull
+        data-testid={fullMenuTestId}
+        aria-hidden={!isOpen}
+        isOpen={isOpen}
+      >
         <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
+        <S.MenuNav>
+          <S.MenuLink href="#">Home</S.MenuLink>
+          <S.MenuLink href="#">Explore</S.MenuLink>
+
+          {!!username && (
+            <>
+              <S.MenuLink href="#">My Account</S.MenuLink>
+              <S.MenuLink href="#">Wishlist</S.MenuLink>
+            </>
+          )}
+        </S.MenuNav>
+
+        {!username && (
+          <S.RegisterBox>
+            <Button fullWidth size="large">
+              Log in now
+            </Button>
+            <span>or</span>
+            <S.CreateAccount href="#" title="Sign Up">
+              Sign Up
+            </S.CreateAccount>
+          </S.RegisterBox>
+        )}
       </S.MenuFull>
     </S.Wrapper>
   )
