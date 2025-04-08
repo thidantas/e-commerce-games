@@ -19,12 +19,13 @@
         "name": "next"
       }
     ],
+    "baseUrl": "src",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["*"]
     }
   },
   "include": [
-    ".jest/setup.ts",
+    ".jest/setupTests.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
