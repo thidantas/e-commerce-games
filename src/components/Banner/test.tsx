@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 
 import Banner from '.'
 import { renderWithTheme } from '@/utils/tests/helpers'
@@ -13,7 +13,7 @@ const props = {
 
 describe('<Banner />', () => {
   it('should render the heading', () => {
-    renderWithTheme(<Banner {...props} />)
+    const { container } = renderWithTheme(<Banner {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /Defy death/i })
@@ -24,5 +24,7 @@ describe('<Banner />', () => {
     ).toBeInTheDocument()
 
     expect(screen.getByRole('img', { name: /Defy death/i })).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
