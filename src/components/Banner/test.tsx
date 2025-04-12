@@ -1,7 +1,7 @@
 import { screen } from '@testing-library/react'
 
+import { renderWithTheme } from 'utils/tests/helpers'
 import Banner from '.'
-import { renderWithTheme } from '@/utils/tests/helpers'
 
 const props = {
   img: 'https://imagemDeMock.com.br',
@@ -26,5 +26,22 @@ describe('<Banner />', () => {
     expect(screen.getByRole('img', { name: /Defy death/i })).toBeInTheDocument()
 
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('should render a Ribbon', () => {
+    renderWithTheme(
+      <Banner
+        {...props}
+        ribbonLabel="My Ribbon"
+        ribbonSize="small"
+        ribbonColor="secondary"
+      />
+    )
+
+    const ribbon = screen.getByText(/My Ribbon/i)
+
+    expect(ribbon).toBeInTheDocument()
+    expect(ribbon).toHaveStyle({ backgroundColor: '#3CD3C1' })
+    expect(ribbon).toHaveStyle({ height: '2.6rem', fontSize: '1.2rem' })
   })
 })
