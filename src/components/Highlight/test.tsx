@@ -34,4 +34,13 @@ describe('<Highlight />', () => {
       backgroundImage: `url(${mockProps.backgroundImage})`
     })
   })
+
+  it('should render float image', () => {
+    renderWithTheme(<Highlight {...mockProps} floatImage="/float-image.png" />)
+
+    expect(screen.getByRole('img', { name: mockProps.title })).toHaveAttribute(
+      'src',
+      '/float-image.png'
+    )
+  })
 })

@@ -5,8 +5,9 @@ import * as S from './styles'
 export type HighlightProps = {
   title: string
   subtitle: string
-  buttonLabel: string
   buttonLink: string
+  buttonLabel: string
+  floatImage?: string
   backgroundImage: string
 }
 
@@ -15,9 +16,11 @@ const Highlight = ({
   subtitle,
   buttonLink,
   buttonLabel,
+  floatImage,
   backgroundImage
 }: HighlightProps) => (
   <S.Wrapper backgroundImage={backgroundImage}>
+    {!!floatImage && <S.FloatImage src={floatImage} alt={title} />}
     <S.Content>
       <S.Title>{title}</S.Title>
       <S.Subtitle>{subtitle}</S.Subtitle>
