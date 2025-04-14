@@ -5,6 +5,12 @@ import Highlight, { HighlightProps } from '.'
 export default {
   title: 'components/Highlight',
   component: Highlight,
+  argTypes: {
+    alignment: {
+      options: ['right', 'left'],
+      control: { type: 'select' }
+    }
+  },
   args: {
     title: "Read Dead it's back",
     subtitle: "Come see Jhon's new adventures",
