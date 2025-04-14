@@ -15,7 +15,7 @@ const mockProps = {
 
 describe('<Highlight />', () => {
   it('should render headings and button', () => {
-    renderWithTheme(<Highlight {...mockProps} />)
+    const { container } = renderWithTheme(<Highlight {...mockProps} />)
 
     expect(
       screen.getByRole('heading', { name: /heading 1/i })
@@ -26,9 +26,11 @@ describe('<Highlight />', () => {
     ).toBeInTheDocument()
 
     expect(screen.getByRole('link', { name: /Buy now/i })).toBeInTheDocument()
+
+    expect(container.firstChild).toMatchSnapshot()
   })
 
-  it('should render headings and button', () => {
+  it('should render background image', () => {
     const { container } = renderWithTheme(<Highlight {...mockProps} />)
 
     expect(container.firstChild).toHaveStyle({
