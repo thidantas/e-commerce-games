@@ -4,6 +4,7 @@ import {
   AddShoppingCart
 } from '@styled-icons/material-outlined'
 
+import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 import Button from 'components/Button'
 
 import * as S from './styles'
@@ -15,6 +16,9 @@ export type GameCardProps = {
   developer: string
   favorite?: boolean
   promotionalPrice?: string
+  ribbonLabel?: string
+  ribbonColor?: RibbonColors
+  ribbonSize?: RibbonSizes
   onFav?: () => void
 }
 
@@ -25,9 +29,18 @@ const GameCard = ({
   developer,
   favorite = false,
   promotionalPrice,
+  ribbonLabel,
+  ribbonColor = 'primary',
+  ribbonSize = 'small',
   onFav
 }: GameCardProps) => (
   <S.Wrapper>
+    {!!ribbonLabel && (
+      <Ribbon color={ribbonColor} size={ribbonSize}>
+        {ribbonLabel}
+      </Ribbon>
+    )}
+
     <S.ImageBox>
       <img src={img} alt={title} />
     </S.ImageBox>
