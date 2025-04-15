@@ -19,6 +19,17 @@ export default {
     },
     onFav: {
       action: 'clicked'
+    },
+    ribbonLabel: {
+      type: 'string'
+    },
+    ribbonSize: {
+      options: ['small', 'normal'],
+      control: { type: 'select' }
+    },
+    ribbonColor: {
+      options: ['primary', 'secondary'],
+      control: { type: 'select' }
     }
   },
   parameters: {
@@ -33,3 +44,15 @@ export const Default: StoryFn<GameCardProps> = (args) => (
     <GameCard {...args} />
   </div>
 )
+
+export const WithRibbon: StoryFn<GameCardProps> = (args) => (
+  <div style={{ width: '30rem' }}>
+    <GameCard {...args} />
+  </div>
+)
+
+WithRibbon.args = {
+  ribbonLabel: '20% OFF',
+  ribbonColor: 'secondary',
+  ribbonSize: 'small'
+}
