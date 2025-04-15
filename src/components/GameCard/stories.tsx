@@ -10,7 +10,21 @@ export default {
     title: 'Borderlands 3',
     price: 'R$ 215,00',
     developer: 'Gearbox Software',
-    promotionalPrice: 'R$ 200,00'
+    promotionalPrice: 'R$ 200,00',
+    favorite: false
+  },
+  argTypes: {
+    favorite: {
+      control: 'boolean'
+    },
+    onFav: {
+      action: 'clicked'
+    }
+  },
+  parameters: {
+    backgrounds: {
+      default: 'dark'
+    }
   }
 } as Meta
 
