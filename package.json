@@ -18,10 +18,12 @@
   "dependencies": {
     "@styled-icons/material-outlined": "^10.47.0",
     "@styled-icons/remix-fill": "^10.46.0",
+    "@types/react-slick": "^0.23.13",
     "next": "^15.2.4",
     "polished": "^4.3.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-slick": "^0.30.3",
     "styled-components": "^5.3.11",
     "styled-media-query": "^2.1.2"
   },
