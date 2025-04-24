@@ -6,9 +6,7 @@ const config = {
     name: '@storybook/experimental-nextjs-vite',
     options: {}
   },
-  docs: {
-    autodocs: true
-  },
+  docs: {},
   webpackFinal: (config) => {
     config.resolve.modules.push(`${process.cwd()}/src`)
     return config
