@@ -15,6 +15,7 @@ const config: Config = {
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setupTests.ts'],
   modulePaths: ['<rootDir>/src'],
+  prettierPath: require.resolve('prettier-2'),
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': [
       'babel-jest',
