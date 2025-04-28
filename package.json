@@ -70,6 +70,7 @@
     "playwright": "^1.51.1",
     "plop": "^4.0.1",
     "prettier": "3.5.3",
+    "prettier-2": "npm:prettier@^2",
     "storybook": "^8.6.12",
     "ts-jest": "^29.3.1",
     "ts-node": "^10.9.2",
