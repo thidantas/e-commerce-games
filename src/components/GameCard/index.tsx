@@ -4,8 +4,8 @@ import {
   AddShoppingCart
 } from '@styled-icons/material-outlined'
 
-import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 import Button from 'components/Button'
+import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
 
 import * as S from './styles'
 
@@ -42,6 +42,7 @@ const GameCard = ({
     )}
 
     <S.ImageBox>
+      {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img src={img} alt={title} />
     </S.ImageBox>
 
