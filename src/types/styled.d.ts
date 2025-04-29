@@ -1,5 +1,6 @@
-import theme from '@/styles/theme'
 import 'styled-components'
+
+import theme from 'styles/theme'
 
 // Type Inference
 type Theme = typeof theme

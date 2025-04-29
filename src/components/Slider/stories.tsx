@@ -1,8 +1,8 @@
-import { Meta, StoryFn, StoryObj } from '@storybook/react'
+import { Settings } from 'react-slick'
+import { Meta, StoryFn } from '@storybook/react'
+import styled from 'styled-components'
 
 import Slider from '.'
-import { Settings } from 'react-slick'
-import styled from 'styled-components'
 
 export default {
   title: 'components/Slider',
