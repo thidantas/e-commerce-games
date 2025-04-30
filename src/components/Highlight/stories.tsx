@@ -1,5 +1,6 @@
 import { Meta, StoryFn } from '@storybook/react'
 
+import item from './mock'
 import Highlight, { HighlightProps } from '.'
 
 export default {
@@ -12,11 +13,7 @@ export default {
     }
   },
   args: {
-    title: "Read Dead it's back",
-    subtitle: "Come see Jhon's new adventures",
-    buttonLink: '/rdr2',
-    buttonLabel: 'Buy now',
-    backgroundImage: '/img/red-dead-img.jpg'
+    ...item
   }
 } as Meta
 
