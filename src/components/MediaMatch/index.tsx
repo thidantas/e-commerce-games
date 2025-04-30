@@ -1,3 +1,5 @@
+'use client'
+
 import styled, { css } from 'styled-components'
 import media, { DefaultBreakpoints } from 'styled-media-query'
 
@@ -12,6 +14,7 @@ const mediaMatchModifiers = {
   lessThan: (size: breakpoint) => css`
     ${media.lessThan(size)` display: block`}
   `,
+
   greatherThan: (size: breakpoint) => css`
     ${media.greaterThan(size)` display: block`}
   `
