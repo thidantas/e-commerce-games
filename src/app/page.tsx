@@ -1,5 +1,20 @@
-import Home from 'templates/Home'
+import Home, { HomeTemplateProps } from 'templates/Home'
+import BannerMock from 'components/BannerSlider/mock'
+import gamesMock from 'components/GameCardSlider/mock'
+import HighlightMock from 'components/Highlight/mock'
 
-export default function App() {
-  return <Home />
+const mockProps: HomeTemplateProps = {
+  banners: BannerMock,
+  newGames: gamesMock,
+  mostPopularGames: gamesMock,
+  mostPopularHighlight: HighlightMock,
+  upcommingGames: gamesMock,
+  upcommingHighlight: HighlightMock,
+  upcommingMoreGames: gamesMock,
+  freeGames: gamesMock,
+  freeHighlight: HighlightMock
+}
+
+export default async function App() {
+  return <Home {...mockProps} />
 }

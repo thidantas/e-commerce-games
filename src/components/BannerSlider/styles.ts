@@ -1,3 +1,5 @@
+'use client'
+
 import media from 'styled-media-query'
 import styled, { css } from 'styled-components'
 
@@ -48,6 +50,7 @@ export const Wrapper = styled.section`
         height: 100%;
         align-items: flex-end;
         flex-direction: column;
+        gap: ${theme.spacings.xsmall};
 
         li {
           margin: ${theme.spacings.xxsmall} 0;
