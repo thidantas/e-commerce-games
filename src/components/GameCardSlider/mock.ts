@@ -1,4 +1,4 @@
-export default [
+const gameCardSliderItemsMock = [
   {
     title: 'Prince of Persia - Sands of Time',
     developer: 'Ubisoft',
@@ -26,5 +26,28 @@ export default [
     img: '/img/prince-of-persia-img.jpg',
     price: 'R$ 29,90',
     promotionalPrice: 'R$ 5,99'
+  },
+  {
+    title: 'Prince Of Persia',
+    developer: 'Ubisoft',
+    img: '/img/prince-of-persia-img.jpg',
+    price: 'R$ 29,90',
+    promotionalPrice: 'R$ 5,99'
+  },
+  {
+    title: 'Prince Of Persia',
+    developer: 'Ubisoft',
+    img: '/img/prince-of-persia-img.jpg',
+    price: 'R$ 29,90',
+    promotionalPrice: 'R$ 5,99'
+  },
+  {
+    title: 'Prince Of Persia',
+    developer: 'Ubisoft',
+    img: '/img/prince-of-persia-img.jpg',
+    price: 'R$ 29,90',
+    promotionalPrice: 'R$ 5,99'
   }
 ]
+
+export default gameCardSliderItemsMock
