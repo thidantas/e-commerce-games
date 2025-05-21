@@ -22,7 +22,7 @@ const config: Config = {
       {
         presets: [
           'next/babel',
-          ['@babel/preset-react', { runtime: 'automatic' }] // ✅ nova transformação JSX
+          ['@babel/preset-react', { runtime: 'automatic' }]
         ]
       }
     ]
