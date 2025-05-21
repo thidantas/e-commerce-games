@@ -3,15 +3,12 @@ import styled from 'styled-components'
 export const Wrapper = styled.section`
   .slick-slider {
     position: relative;
-
     display: block;
     box-sizing: border-box;
-
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-
     -webkit-touch-callout: none;
     -khtml-user-select: none;
     -ms-touch-action: pan-y;
@@ -21,10 +18,8 @@ export const Wrapper = styled.section`
 
   .slick-list {
     position: relative;
-
     display: block;
     overflow: hidden;
-
     margin: 0;
     padding: 0;
   }
@@ -49,7 +44,6 @@ export const Wrapper = styled.section`
     position: relative;
     top: 0;
     left: 0;
-
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -57,7 +51,6 @@ export const Wrapper = styled.section`
   .slick-track:before,
   .slick-track:after {
     display: table;
-
     content: '';
   }
   .slick-track:after {
@@ -70,7 +63,6 @@ export const Wrapper = styled.section`
   .slick-slide {
     display: none;
     float: left;
-
     height: 100%;
     min-height: 1px;
   }
@@ -107,78 +99,7 @@ export const Wrapper = styled.section`
     margin-bottom: 30px;
   }
 
-  .slick-dots {
-    position: absolute;
-
-    display: block;
-
-    width: 100%;
-    padding: 0;
-    margin: 0;
-
-    list-style: none;
-  }
-  .slick-dots li {
-    position: relative;
-
-    display: inline-block;
-
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    padding: 0;
-
-    cursor: pointer;
-  }
-
-  .slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-
-    display: block;
-
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-
-    cursor: pointer;
-
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-  }
-  .slick-dots li button:hover,
-  .slick-dots li button:focus {
-    outline: none;
-  }
-  .slick-dots li button:hover:before,
-  .slick-dots li button:focus:before {
-    opacity: 1;
-  }
-  .slick-dots li button:before {
-    font-family: 'slick';
-    font-size: 6px;
-    line-height: 20px;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 20px;
-    height: 20px;
-
-    content: '';
-    text-align: center;
-
-    opacity: 0.25;
-    color: black;
-
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  .slick-dots li.slick-active button:before {
-    opacity: 0.75;
-    color: black;
+  .slick-dotted.slick-slider {
+    margin-bottom: 30px;
   }
 `
