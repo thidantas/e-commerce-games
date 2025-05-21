@@ -12,9 +12,9 @@ const props = {
   newGames: gamesMock,
   mostPopularGames: gamesMock,
   mostPopularHighlight: highlightMock,
-  upcommingGames: gamesMock,
-  upcommingHighlight: highlightMock,
-  upcommingMoreGames: gamesMock,
+  upcomingGames: gamesMock,
+  upcomingHighlight: highlightMock,
+  upcomingMoreGames: gamesMock,
   freeGames: gamesMock,
   freeHighlight: highlightMock
 }
@@ -44,7 +44,7 @@ describe('<Home />', () => {
     ).toBeInTheDocument()
 
     expect(
-      screen.getByRole('heading', { name: /upcomming/i })
+      screen.getByRole('heading', { name: /upcoming/i })
     ).toBeInTheDocument()
 
     expect(
