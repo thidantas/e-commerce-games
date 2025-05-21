@@ -16,10 +16,22 @@ export const Wrapper = styled.section<WrapperProps>`
       display: flex;
     }
 
-    .slick-slide > div {
+    .slick-list {
       display: flex;
+    }
+
+    .slick-slide > div {
+      margin: 0 ${theme.spacings.xxsmall};
+      flex: 1 0 auto;
       height: 100%;
-      margin-right: ${theme.spacings.xsmall};
+
+      > svg {
+        color: inherit;
+      }
+    }
+
+    .slick-list {
+      margin: 0 -${theme.spacings.xxsmall};
     }
 
     ${media.greaterThan('large')`
@@ -30,19 +42,21 @@ export const Wrapper = styled.section<WrapperProps>`
 
     .slick-prev,
     .slick-next {
-      display: block !important;
-      color: ${theme.colors[color!]};
-      cursor: pointer;
-      position: absolute;
       top: 50%;
+      position: absolute;
+      display: block;
+      color: ${theme.colors[color!]};
       width: 2.5rem;
       height: 2.5rem;
       padding: 0;
       transform: translate(0, -50%);
+      cursor: pointer;
+      border: none;
+      background: none;
     }
 
     .slick-prev {
-      left: -${theme.spacings.xxlarge} !;
+      left: -${theme.spacings.xxlarge};
     }
 
     .slick-next {
@@ -50,7 +64,7 @@ export const Wrapper = styled.section<WrapperProps>`
     }
 
     .slick-prev.slick-disabled,
-    .slick-next.slick-disabled {
+    .slick-prev.slick-disabled {
       visibility: hidden;
     }
   `}

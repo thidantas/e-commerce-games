@@ -115,69 +115,8 @@ exports[`<Slider /> should render children as slider item 1`] = `
   margin-bottom: 30px;
 }
 
-.c0 .slick-dots {
-  position: absolute;
-  display: block;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.c0 .slick-dots li {
-  position: relative;
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  margin: 0 5px;
-  padding: 0;
-  cursor: pointer;
-}
-
-.c0 .slick-dots li button {
-  font-size: 0;
-  line-height: 0;
-  display: block;
-  width: 20px;
-  height: 20px;
-  padding: 5px;
-  cursor: pointer;
-  color: transparent;
-  border: 0;
-  outline: none;
-  background: transparent;
-}
-
-.c0 .slick-dots li button:hover,
-.c0 .slick-dots li button:focus {
-  outline: none;
-}
-
-.c0 .slick-dots li button:hover:before,
-.c0 .slick-dots li button:focus:before {
-  opacity: 1;
-}
-
-.c0 .slick-dots li button:before {
-  font-family: 'slick';
-  font-size: 6px;
-  line-height: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  content: '';
-  text-align: center;
-  opacity: 0.25;
-  color: black;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.c0 .slick-dots li.slick-active button:before {
-  opacity: 0.75;
-  color: black;
+.c0 .slick-dotted.slick-slider {
+  margin-bottom: 30px;
 }
 
 <section

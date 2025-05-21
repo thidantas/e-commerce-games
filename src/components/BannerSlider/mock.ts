@@ -1,4 +1,4 @@
-export default [
+const bannerSliderItemsMock = [
   {
     img: '/img/resident-evil-1-img.jpg',
     title: 'Resident Evil 1',
@@ -24,3 +24,5 @@ export default [
     ribbonLabel: '20% OFF'
   }
 ]
+
+export default bannerSliderItemsMock

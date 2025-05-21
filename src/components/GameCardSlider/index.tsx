@@ -8,21 +8,11 @@ import Slider, { SliderSettings } from 'components/Slider'
 
 import * as S from './styles'
 
-export type GameCardSliderProps = {
-  items: GameCardProps[]
-  color?: 'white' | 'black'
-}
-
 const settings: SliderSettings = {
   slidesToShow: 4,
   infinite: false,
   lazyLoad: 'ondemand',
-  // TODO: investigate why arrows are not rendered with the inserted style properties
-  // *
   arrows: true,
-  prevArrow: <ArrowLeft aria-label="previous games" />,
-  nextArrow: <ArrowRight aria-label="next games" />,
-  //*
   responsive: [
     {
       breakpoint: 1375,
@@ -48,10 +38,17 @@ const settings: SliderSettings = {
         slidesToShow: 1.1
       }
     }
-  ]
+  ],
+  prevArrow: <ArrowLeft aria-label="previous games" />,
+  nextArrow: <ArrowRight aria-label="next games" />
 }
 
-const GameCardSlider = ({ items, color = 'black' }: GameCardSliderProps) => {
+export type GameCardSliderProps = {
+  items: GameCardProps[]
+  color?: 'white' | 'black'
+}
+
+const GameCardSlider = ({ items, color = 'white' }: GameCardSliderProps) => {
   return (
     <S.Wrapper color={color}>
       <Slider settings={settings}>

@@ -53,12 +53,12 @@ export const SectionNews = styled(Sections)`
     `}
 
     ${media.greaterThan('medium')`
-      margin-bottom: 0;
       padding-top: 14rem;
-      padding-bottom: 10rem;
-      background-color: ${theme.colors.lightBg};
+      padding-bottom: 9.2rem;
+      margin-bottom: 0;
       clip-path: polygon(0 0, 100% 15%, 100% 100%, 0% 85%);
-    `}
+      background-color: ${theme.colors.lightBg};
+  `}
 
     ${HeadingStyles.Wrapper} {
       color: ${theme.colors.black};
@@ -68,7 +68,7 @@ export const SectionNews = styled(Sections)`
 
 export const SectionMostPopular = styled(Sections)``
 
-export const SectionUpcomming = styled(Sections)`
+export const SectionUpcoming = styled(Sections)`
   ${({ theme }) => css`
     ${HighlightStyles.Wrapper} {
       margin-top: calc(${theme.spacings.xlarge} * 2);
