@@ -8,9 +8,9 @@ const mockProps: HomeTemplateProps = {
   newGames: gamesMock,
   mostPopularGames: gamesMock,
   mostPopularHighlight: HighlightMock,
-  upcommingGames: gamesMock,
-  upcommingHighlight: HighlightMock,
-  upcommingMoreGames: gamesMock,
+  upcomingGames: gamesMock,
+  upcomingHighlight: HighlightMock,
+  upcomingMoreGames: gamesMock,
   freeGames: gamesMock,
   freeHighlight: HighlightMock
 }
