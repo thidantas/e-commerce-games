@@ -8,53 +8,65 @@ import * as BannerStyles from 'components/Banner/styles'
 export const Wrapper = styled.section`
   ${({ theme }) => css`
     .slick-dots {
-      display: flex !important;
-      align-items: center;
-      justify-content: center;
+      display: flex;
+      width: 100%;
+      padding: 0;
       margin-top: ${theme.spacings.small};
+      list-style: none;
+      text-align: center;
 
       li {
-        display: flex;
-        background: ${theme.colors.white};
+        position: relative;
+        display: inline-block;
+        flex-direction: row;
         width: 1.2rem;
         height: 1.2rem;
         border-radius: 100%;
-        align-items: center;
-        justify-content: center;
         margin: 0 ${theme.spacings.xxsmall};
+        padding: 0;
+        background: ${theme.colors.white};
         cursor: pointer;
 
         &.slick-active {
+          opacity: 1;
           background: ${theme.colors.primary};
-        }
-      }
 
-      button: {
-        opacity: 0;
-        width: 10rem;
-        height: 10rem;
-        cursor: pointer;
+          & > button {
+            background: ${theme.colors.primary};
+          }
+        }
+
+        & > button {
+          position: absolute;
+          top: 0;
+          left: 0;
+          cursor: pointer;
+          color: transparent;
+          border: 0;
+          width: 1.2rem;
+          height: 1.2rem;
+          border-radius: 100%;
+        }
       }
     }
 
     ${media.greaterThan('large')`
       ${BannerStyles.Wrapper} {
-        margin: 0 auto;
         max-width: 104rem;
       }
 
-      .slick-dots {
-        top: 0;
-        right:  0;
-        margin: 0;
-        height: 100%;
-        align-items: flex-end;
-        flex-direction: column;
-        gap: ${theme.spacings.xsmall};
+      .slick-slide {
+        margin-left: -1px;
+      }
 
-        li {
-          margin: ${theme.spacings.xxsmall} 0;
-        }
+      .slick-dots {
+        display: flex !important;
+        flex-direction: column;
+        position: absolute;
+        top: 50%;
+        align-items: flex-end;
+        margin-top: 0;
+        gap: calc(${theme.spacings.xxsmall} * 2);
       }
     `}
   `}
