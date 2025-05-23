@@ -47,7 +47,6 @@ export default defineConfig([
       'react-hooks/exhaustive-deps': 'warn',
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
-      '@typescript-eslint/explicit-module-boundary-types': 'off',
       'import/no-anonymous-default-export': [
         'error',
         {
@@ -61,6 +60,7 @@ export default defineConfig([
           allowObject: true
         }
       ],
+      '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-unused-vars': 'warn'
     },
 
