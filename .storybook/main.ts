@@ -4,12 +4,17 @@ import { StorybookConfig } from '@storybook/experimental-nextjs-vite'
 const config: StorybookConfig = {
   staticDirs: ['../public'],
   stories: ['../src/components/**/stories.tsx'],
-  addons: ['@storybook/addon-essentials'],
+  addons: ['@storybook/addon-essentials', '@chromatic-com/storybook'],
+
   framework: {
     name: '@storybook/experimental-nextjs-vite',
     options: {}
   },
-  docs: {},
+
+  docs: {
+    autodocs: true
+  },
+
   viteFinal: async (config) => {
     config.resolve = config.resolve || {}
     config.resolve.alias = {
@@ -20,6 +25,10 @@ const config: StorybookConfig = {
     }
 
     return config
+  },
+
+  typescript: {
+    reactDocgen: 'react-docgen-typescript'
   }
 }
 
