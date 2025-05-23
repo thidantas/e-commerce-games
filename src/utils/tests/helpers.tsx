@@ -3,6 +3,10 @@ import { render, RenderResult } from '@testing-library/react'
 
 import theme from 'styles/theme'
 
-export const renderWithTheme = (children: React.ReactNode): RenderResult => {
-  return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>)
+const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
+  return <ThemeProvider theme={theme}>{children}</ThemeProvider>
+}
+
+export const renderWithTheme = (ui: React.ReactElement): RenderResult => {
+  return render(ui, { wrapper: AllTheProviders })
 }
