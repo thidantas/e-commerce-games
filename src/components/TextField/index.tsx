@@ -1,9 +1,4 @@
-import React, {
-  useState,
-  InputHTMLAttributes,
-  useCallback,
-  useEffect
-} from 'react'
+import React, { useState, InputHTMLAttributes, useCallback } from 'react'
 
 import * as S from './styles'
 
@@ -21,8 +16,8 @@ export type TextFieldProps = {
 const TextField = ({
   icon,
   label,
-  labelFor = '',
   error,
+  labelFor = '',
   disabled = false,
   initialValue = '',
   iconPosition = 'left',
@@ -44,10 +39,6 @@ const TextField = ({
     },
     [onFieldText]
   )
-
-  useEffect(() => {
-    if (!disabled) return
-  }, [disabled])
 
   return (
     <S.Wrapper disabled={disabled} error={!!error}>
