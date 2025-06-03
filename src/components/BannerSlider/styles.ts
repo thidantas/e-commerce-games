@@ -56,7 +56,7 @@ export const Wrapper = styled.section`
       }
 
       .slick-slide {
-        margin-left: -1px;
+        margin-left: 11.4rem;
       }
 
       .slick-dots {
