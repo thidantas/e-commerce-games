@@ -8,6 +8,28 @@ import Slider, { SliderSettings } from 'components/Slider'
 
 import * as S from './styles'
 
+type ArrowProps = {
+  style?: React.CSSProperties
+  className?: string
+  direction: 'left' | 'right'
+  slideCount?: number
+  currentSlide?: number
+  onClick?: React.MouseEventHandler<HTMLDivElement>
+}
+
+const Arrow = ({ className, style, direction, onClick }: ArrowProps) => {
+  return (
+    <div
+      className={className}
+      style={style}
+      onClick={onClick}
+      aria-label={direction === 'left' ? 'previous games' : 'next games'}
+    >
+      {direction === 'left' ? <ArrowLeft /> : <ArrowRight />}
+    </div>
+  )
+}
+
 const settings: SliderSettings = {
   slidesToShow: 4,
   infinite: false,
@@ -39,8 +61,8 @@ const settings: SliderSettings = {
       }
     }
   ],
-  prevArrow: <ArrowLeft aria-label="previous games" />,
-  nextArrow: <ArrowRight aria-label="next games" />
+  prevArrow: <Arrow direction="left" />,
+  nextArrow: <Arrow direction="right" />
 }
 
 export type GameCardSliderProps = {
