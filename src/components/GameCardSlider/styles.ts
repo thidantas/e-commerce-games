@@ -14,16 +14,13 @@ export const Wrapper = styled.section<WrapperProps>`
     .slick-track,
     .slick-list {
       display: flex;
-    }
-
-    .slick-list {
-      display: flex;
+      max-height: 26.7rem;
     }
 
     .slick-slide > div {
       margin: 0 ${theme.spacings.xxsmall};
       flex: 1 0 auto;
-      height: 100%;
+      height: 26.7rem;
 
       > svg {
         color: inherit;
