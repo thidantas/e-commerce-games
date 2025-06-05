@@ -6,20 +6,21 @@ import { GameCardProps } from 'components/GameCard'
 import * as S from './styles'
 
 export type ShowcaseProps = {
+  color?: 'white' | 'black'
   title?: string
   games?: GameCardProps[]
   highlight?: HighlightProps
 }
 
-const Showcase = ({ title, highlight, games }: ShowcaseProps) => (
+const Showcase = ({ title, highlight, games, color }: ShowcaseProps) => (
   <S.Wrapper>
     {!!title && (
-      <Heading lineLeft lineColor="secondary">
+      <Heading lineLeft lineColor="secondary" color={color}>
         {title}
       </Heading>
     )}
     {!!highlight && <Highlight {...highlight} />}
-    {!!games && <GameCardSlider items={games} />}
+    {!!games && <GameCardSlider items={games} color={color} />}
   </S.Wrapper>
 )
 
