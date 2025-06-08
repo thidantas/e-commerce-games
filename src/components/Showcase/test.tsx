@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+
+import highlightMock from 'components/Highlight/mock'
+import gameCardSliderItemsMock from 'components/GameCardSlider/mock'
+import { renderWithTheme } from 'utils/tests/helpers'
 
 import Showcase from '.'
-import highlightMock from '../Highlight/mock'
-import gameCardSliderItemsMock from '../GameCardSlider/mock'
-import { renderWithTheme } from '@/utils/tests/helpers'
-import { GamesDimensions } from '@styled-icons/material-outlined/Games'
 
 const mockProps = {
   title: 'Most Popular',
