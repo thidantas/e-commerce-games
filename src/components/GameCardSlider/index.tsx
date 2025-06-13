@@ -1,34 +1,10 @@
 'use client'
 
-import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined'
-import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined'
-
-import GameCard, { GameCardProps } from 'components/GameCard'
+import Arrow from 'components/Arrow'
 import Slider, { SliderSettings } from 'components/Slider'
+import GameCard, { GameCardProps } from 'components/GameCard'
 
 import * as S from './styles'
-
-type ArrowProps = {
-  style?: React.CSSProperties
-  className?: string
-  direction: 'left' | 'right'
-  slideCount?: number
-  currentSlide?: number
-  onClick?: React.MouseEventHandler<HTMLDivElement>
-}
-
-const Arrow = ({ className, style, direction, onClick }: ArrowProps) => {
-  return (
-    <div
-      className={className}
-      style={style}
-      onClick={onClick}
-      aria-label={direction === 'left' ? 'previous games' : 'next games'}
-    >
-      {direction === 'left' ? <ArrowLeft /> : <ArrowRight />}
-    </div>
-  )
-}
 
 const settings: SliderSettings = {
   slidesToShow: 4,
@@ -61,8 +37,8 @@ const settings: SliderSettings = {
       }
     }
   ],
-  prevArrow: <Arrow direction="left" />,
-  nextArrow: <Arrow direction="right" />
+  prevArrow: <Arrow direction="left" ariaLabel="previous games" />,
+  nextArrow: <Arrow direction="right" ariaLabel="next games" />
 }
 
 export type GameCardSliderProps = {
