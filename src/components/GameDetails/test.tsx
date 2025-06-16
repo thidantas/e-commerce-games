@@ -6,6 +6,7 @@ import { renderWithTheme } from '@/utils/tests/helpers'
 const mockProps: GameDetailsProps = {
   developer: 'Different Tales',
   platforms: ['windows', 'linux', 'mac'],
+  publisher: 'Walkthrough',
   releaseDate: '2020-11-21T23:00:00',
   rating: 'BR0',
   genres: ['Role-playing', 'Action']
@@ -50,6 +51,18 @@ describe('<GameDetails />', () => {
     renderWithTheme(<GameDetails {...mockProps} />)
 
     expect(screen.getByText(/free/i)).toBeInTheDocument()
+  })
+
+  it('should render the developer', () => {
+    renderWithTheme(<GameDetails {...mockProps} />)
+
+    expect(screen.getByText(/different tales/i)).toBeInTheDocument()
+  })
+
+  it('should render the publisher', () => {
+    renderWithTheme(<GameDetails {...mockProps} />)
+
+    expect(screen.getByText(/Walkthrough/i)).toBeInTheDocument()
   })
 
   it('should render 18+ rating when BR18', () => {

@@ -6,7 +6,7 @@ const highlightMock: HighlightProps = {
   buttonLink: '/rdr2',
   buttonLabel: 'Buy now',
   backgroundImage: '/img/red-dead-img.jpg',
-  floatImage: 'img/red-dead-float.png'
+  floatImage: '/img/red-dead-float.png'
 }
 
 export default highlightMock
