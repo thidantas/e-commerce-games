@@ -1,5 +1,7 @@
-import styled, { css } from 'styled-components'
+'use client'
+
 import media from 'styled-media-query'
+import styled, { css } from 'styled-components'
 
 import * as HeadingStyles from 'components/Heading/styles'
 
