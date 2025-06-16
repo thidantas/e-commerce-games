@@ -6,8 +6,8 @@ import galleryMock from 'components/Gallery/mock'
 import highlightMock from 'components/Highlight/mock'
 import gameCardSliderItemsMock from 'components/GameCardSlider/mock'
 
-type SlugProps = {
-  params: {
+type PageProps = {
+  params?: {
     slug: string
   }
 }
@@ -52,14 +52,16 @@ const dataMock = {
   }
 }
 
+export const dynamicParams = true
+
 export async function generateStaticParams() {
   return Object.keys(dataMock).map((slug) => ({
     slug
   }))
 }
 
-export default async function Slug({ params }: SlugProps) {
-  const { slug } = await params
+export default async function Slug({ params }: PageProps) {
+  const slug = params?.slug
 
   const data = dataMock[slug as keyof typeof dataMock]
 
