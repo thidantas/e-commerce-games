@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Favorite,
   FavoriteBorder,
@@ -51,6 +53,7 @@ const GameCard = ({
         <S.Title>{title}</S.Title>
         <S.Developer>{developer}</S.Developer>
       </S.Info>
+
       <S.FavButton role="button" onClick={onFav}>
         {favorite ? (
           <Favorite aria-label="Remove from Wishlist" />
@@ -58,6 +61,7 @@ const GameCard = ({
           <FavoriteBorder aria-label="Add to Wishlist" />
         )}
       </S.FavButton>
+
       <S.BuyBox>
         {!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
         <S.Price>{promotionalPrice || price}</S.Price>
