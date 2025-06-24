@@ -50,7 +50,7 @@ export const MenuNav = styled.nav`
   `}
 `
 
-export const MenuLink = styled.a`
+export const MenuLink = styled(Link)`
   ${({ theme }) => css`
     position: relative;
     color: ${theme.colors.white};

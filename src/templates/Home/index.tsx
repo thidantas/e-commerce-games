@@ -1,3 +1,5 @@
+'use client'
+
 import Base from 'templates/Base'
 import Showcase from 'components/Showcase'
 import BannerSlider from 'components/BannerSlider'
@@ -39,7 +41,7 @@ const Home = ({
     </Container>
 
     <S.SectionNews>
-      <Showcase title="News" games={newGames} color="black" />
+      <Showcase title="News" games={newGames} />
     </S.SectionNews>
 
     <Showcase
