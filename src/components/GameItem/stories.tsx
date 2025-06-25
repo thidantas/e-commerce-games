@@ -13,3 +13,9 @@ export default {
 } as Meta
 
 export const Default: StoryObj<GameItemProps> = {}
+
+export const WithDownloadLink: StoryObj<GameItemProps> = {
+  args: {
+    downloadLink: 'https://link'
+  }
+}

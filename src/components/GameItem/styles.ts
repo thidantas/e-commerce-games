@@ -50,6 +50,11 @@ export const Title = styled.h3`
     font-weight: ${theme.font.bold};
     color: ${theme.colors.black};
     margin-bottom: ${theme.spacings.xxsmall};
+
+    ${media.greaterThan('medium')`
+      font-size: 2rem;
+      line-height: 2rem;
+    `}
   `}
 `
 
@@ -61,5 +66,12 @@ export const Price = styled.p`
     border-radius: ${theme.border.radius};
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.bold};
+  `}
+`
+
+export const DownloadLink = styled.a`
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    margin-left: ${theme.spacings.xxsmall};
   `}
 `
