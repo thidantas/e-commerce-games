@@ -1,11 +1,13 @@
+'use client'
+
 import { Download } from '@styled-icons/boxicons-solid'
 
 import * as S from './styles'
 
 export type PaymentInfoProps = {
-  number: string
-  flag: string
   img: string
+  flag: string
+  number: string
   purchaseDate: string
 }
 

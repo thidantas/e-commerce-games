@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Add, ShoppingCart } from '@styled-icons/material-outlined'
 

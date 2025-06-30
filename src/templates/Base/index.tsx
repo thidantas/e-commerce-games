@@ -1,6 +1,6 @@
-import { Container } from 'components/Container'
 import Menu from 'components/Menu'
 import Footer from 'components/Footer'
+import { Container } from 'components/Container'
 
 import * as S from './styles'
 

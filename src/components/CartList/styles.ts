@@ -1,3 +1,5 @@
+'use client'
+
 import media from 'styled-media-query'
 import { tint } from 'polished'
 import styled, { css } from 'styled-components'
