@@ -1,4 +1,6 @@
-const gameInfoMock = {
+import { GameInfoProps } from '.'
+
+const gameInfoMock: GameInfoProps = {
   title: 'Borderlands 3',
   price: '215.00',
   description:

@@ -45,6 +45,7 @@ export default defineConfig([
     rules: {
       'react-hooks/rules-of-hooks': 'error',
       'react-hooks/exhaustive-deps': 'warn',
+      'no-console': 'warn',
       'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
       'import/no-anonymous-default-export': [

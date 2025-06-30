@@ -1,3 +1,5 @@
+'use client'
+
 import { InputHTMLAttributes, useCallback } from 'react'
 
 import * as S from './styles'
