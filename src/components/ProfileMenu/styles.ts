@@ -1,8 +1,6 @@
 import Link from 'next/link'
 import media from 'styled-media-query'
-import styled, { css } from 'styled-components'
-
-export const Nav = styled.nav``
+import styled, { css, DefaultTheme } from 'styled-components'
 
 export const ProfileList = styled.ul`
   ${({ theme }) => css`
@@ -25,12 +23,30 @@ export const ProfileList = styled.ul`
   `}
 `
 
-export const ProfileLink = styled(Link)`
-  ${({ theme }) => css`
-    display: flex;
-    font-size: ${theme.font.sizes.large};
+const linkModifiers = {
+  default: (theme: DefaultTheme) => css`
     background: ${theme.colors.white};
     color: ${theme.colors.black};
+  `,
+
+  active: (theme: DefaultTheme) => css`
+    background: ${theme.colors.primary};
+    color: ${theme.colors.white};
+  `
+}
+
+type LinkProps = {
+  isActive?: boolean
+}
+
+export const ProfileLink = styled(Link).withConfig({
+  shouldForwardProp: (prop: string | number, defaultValidatorFn) =>
+    prop !== 'isActive' && defaultValidatorFn(prop)
+})<LinkProps>`
+  ${({ theme, isActive }) => css`
+    display: flex;
+    font-size: ${theme.font.sizes.large};
+
     text-decoration: none;
     align-items: center;
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
@@ -52,5 +68,8 @@ export const ProfileLink = styled(Link)`
         display: none;
       }
       `}
+
+    ${isActive && linkModifiers.active(theme)}
+    ${!isActive && linkModifiers.default(theme)}
   `}
 `

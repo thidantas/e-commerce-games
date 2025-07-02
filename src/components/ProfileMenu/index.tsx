@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import {
   ExitToApp,
   CreditCard,
@@ -28,19 +29,41 @@ const profileMenuItems = [
   }
 ]
 
-const ProfileMenu = () => (
-  <nav>
-    <S.ProfileList>
-      {profileMenuItems.map(({ icon, label, href }) => (
-        <li key={href}>
-          <S.ProfileLink href={href}>
-            {icon}
-            <span>{label}</span>
-          </S.ProfileLink>
-        </li>
-      ))}
-    </S.ProfileList>
-  </nav>
-)
+export type ProfileRoutes =
+  | '/profile/me'
+  | '/profile/cards'
+  | '/profile/orders'
+  | '/logout'
+
+export type ProfileMenuProps = {
+  activeProfile?: ProfileRoutes
+}
+
+const ProfileMenu = ({ activeProfile }: ProfileMenuProps) => {
+  const [activeLink, setActiveLink] = useState(activeProfile)
+
+  useEffect(() => {
+    setActiveLink(activeProfile)
+  }, [activeProfile])
+
+  return (
+    <nav>
+      <S.ProfileList>
+        {profileMenuItems.map(({ icon, label, href }) => {
+          const isActive = activeLink === href
+
+          return (
+            <li key={href}>
+              <S.ProfileLink href={href} title={label} isActive={isActive}>
+                {icon}
+                <span>{label}</span>
+              </S.ProfileLink>
+            </li>
+          )
+        })}
+      </S.ProfileList>
+    </nav>
+  )
+}
 
 export default ProfileMenu

@@ -17,4 +17,13 @@ describe('<ProfileMenu />', () => {
 
     expect(container.firstChild).toMatchSnapshot()
   })
+
+  it('screen render the menu with an active link defined', () => {
+    renderWithTheme(<ProfileMenu activeProfile="/profile/cards" />)
+
+    expect(screen.getByRole('link', { name: /my cards/i })).toHaveStyle({
+      color: '#FAFAFA',
+      background: '#F231A5'
+    })
+  })
 })
