@@ -8,7 +8,7 @@ import TextField from '.'
 
 describe('<TextField />', () => {
   it('Renders with label', () => {
-    renderWithTheme(<TextField label="Label" labelFor="field" id="field" />)
+    renderWithTheme(<TextField label="Label" name="field" />)
 
     expect(screen.getByLabelText('Label')).toBeInTheDocument()
   })
@@ -42,10 +42,9 @@ describe('<TextField />', () => {
   it('Renders with error', () => {
     const { container } = renderWithTheme(
       <TextField
-        id="TextField"
         icon={<Email data-testid="icon" />}
         label="TextField"
-        labelFor="TextField"
+        name="textField"
         error="Error message"
       />
     )
@@ -59,12 +58,7 @@ describe('<TextField />', () => {
     const onFieldText = jest.fn()
 
     renderWithTheme(
-      <TextField
-        onFieldText={onFieldText}
-        label="TextField"
-        labelFor="TextField"
-        id="TextField"
-      />
+      <TextField onFieldText={onFieldText} label="TextField" name="textField" />
     )
 
     const input = screen.getByRole('textbox')
@@ -79,9 +73,7 @@ describe('<TextField />', () => {
   })
 
   it('Is accessible by tab', async () => {
-    renderWithTheme(
-      <TextField label="TextField" labelFor="TextField" id="TextField" />
-    )
+    renderWithTheme(<TextField label="TextField" name="textField" />)
 
     const input = screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
@@ -97,8 +89,7 @@ describe('<TextField />', () => {
       <TextField
         onFieldText={onFieldText}
         label="TextField"
-        labelFor="TextField"
-        id="TextField"
+        name="textField"
         disabled
       />
     )
@@ -116,14 +107,7 @@ describe('<TextField />', () => {
   })
 
   it('Is not accessible by tab when disabled', () => {
-    renderWithTheme(
-      <TextField
-        label="TextField"
-        labelFor="TextField"
-        id="TextField"
-        disabled
-      />
-    )
+    renderWithTheme(<TextField label="TextField" name="textField" disabled />)
 
     const input = screen.getByLabelText('TextField')
     expect(document.body).toHaveFocus()
