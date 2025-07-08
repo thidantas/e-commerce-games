@@ -1,16 +1,14 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
+import { Email } from '@styled-icons/material-outlined'
 
 import TextField, { TextFieldProps } from '.'
-import { Email } from '@styled-icons/material-outlined'
 
 export default {
   title: 'components/Forms/TextField',
   component: TextField,
   args: {
     label: 'E-mail',
-    labelFor: 'email',
-    id: 'email',
-    initialValue: '',
+    name: 'email',
     disabled: false,
     placeholder: 'email.email@email.com'
   },
@@ -37,32 +35,40 @@ export default {
   }
 } as Meta
 
-export const Default: StoryFn<TextFieldProps> = (args) => (
-  <div style={{ maxWidth: 300, padding: 15 }}>
-    <TextField {...args} />
-  </div>
-)
-
-export const WithIcon: StoryFn<TextFieldProps> = (args) => (
-  <div style={{ maxWidth: 310, padding: 15 }}>
-    <TextField {...args} icon={<Email />} />
-  </div>
-)
-
-WithIcon.args = {
-  ...Default.args,
-  iconPosition: 'left'
+export const Default: StoryObj<TextFieldProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: 300, padding: 15 }}>
+      <TextField {...args} />
+    </div>
+  )
 }
 
-export const WithError: StoryFn<TextFieldProps> = (args) => (
-  <div style={{ maxWidth: 310, padding: 15 }}>
-    <TextField {...args} icon={<Email />} />
-  </div>
-)
+export const WithIcon: StoryObj<TextFieldProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: 310, padding: 15 }}>
+      <TextField {...args} icon={<Email />} iconPosition="left" />
+    </div>
+  )
+}
 
-WithError.args = {
-  ...Default.args,
-  error: 'Invalid e-mail',
-  iconPosition: 'left',
-  initialValue: 'email@email.com'
+export const Disabled: StoryObj<TextFieldProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: 310, padding: 15 }}>
+      <TextField {...args} icon={<Email />} iconPosition="left" disabled />
+    </div>
+  )
+}
+
+export const WithError: StoryObj<TextFieldProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: 310, padding: 15 }}>
+      <TextField
+        {...args}
+        icon={<Email />}
+        error="Invalid e-mail"
+        iconPosition="left"
+        initialValue="email@email.com"
+      />
+    </div>
+  )
 }
