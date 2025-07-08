@@ -60,7 +60,7 @@ export async function generateStaticParams() {
   }))
 }
 
-export default async function Slug({ params }: PageProps) {
+export default async function GamePage({ params }: PageProps) {
   const slug = params?.slug
 
   const data = dataMock[slug as keyof typeof dataMock]

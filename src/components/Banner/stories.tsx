@@ -1,4 +1,4 @@
-import { Meta, StoryFn } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 
 import Banner, { BannerProps } from '.'
 
@@ -11,25 +11,31 @@ export default {
     }
   },
   args: {
-    img: 'https://img.freepik.com/fotos-gratis/renderizacao-3d-de-fundo-de-textura-hexagonal_23-2150796421.jpg?t=st=1744305474~exp=1744309074~hmac=21ca4e3043d63d9d289c195d50fbfca592080b8dad64dd27e9d56cf8be53d360&w=996',
-    title: 'Defy death',
-    subtitle: '<p>Play the new <strong>CrashLands</strong> season</p>',
+    img: '/img/halo-4.jpg',
+    title: 'Halo 4',
+    subtitle: '<p>Join the fight in the new <strong>Halo 4</strong> season</p>',
     buttonLabel: 'Buy now',
-    buttonLink: '/games/defy-death'
+    buttonLink: '/game/halo-4'
   },
   parameters: {
-    layout: 'fullscreen'
+    backgrounds: {
+      default: 'dark'
+    }
   }
 } as Meta
 
-export const Default: StoryFn<BannerProps> = (args) => (
-  <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
-    <Banner {...args} />
-  </div>
-)
+export const Default: StoryObj<BannerProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: '130rem', margin: '0 auto' }}>
+      <Banner {...args} />
+    </div>
+  )
+}
 
-export const WithRibbon: StoryFn<BannerProps> = (args) => (
-  <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
-    <Banner {...args} ribbonLabel="50% OFF" />
-  </div>
-)
+export const WithRibbon: StoryObj<BannerProps> = {
+  render: (args) => (
+    <div style={{ maxWidth: '104rem', margin: '0 auto' }}>
+      <Banner {...args} ribbonLabel="50% OFF" />
+    </div>
+  )
+}
