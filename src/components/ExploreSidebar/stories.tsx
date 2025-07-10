@@ -18,3 +18,12 @@ export default {
 } as Meta
 
 export const Default: StoryObj<ExploreSidebarProps> = {}
+
+export const WithInitialValues: StoryObj<ExploreSidebarProps> = {
+  args: {
+    initialValues: {
+      windows: true,
+      sort_by: 'low-to-high'
+    }
+  }
+}
