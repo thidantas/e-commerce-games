@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { memo, useCallback, useState } from 'react'
 
 import Radio from 'components/Radio'
 import Button from 'components/Button'
@@ -26,10 +26,26 @@ export type ItemProps = {
 export type ExploreSidebarProps = {
   items: ItemProps[]
   initialValues?: Values
+  onFilter: (values: Values) => void
 }
 
-const ExploreSidebar = ({ items, initialValues = {} }: ExploreSidebarProps) => {
+const ExploreSidebar = ({
+  items,
+  initialValues = {},
+  onFilter
+}: ExploreSidebarProps) => {
   const [values, setValues] = useState(initialValues)
+
+  const handleOnChangeValues = useCallback(
+    (name: string, value: string | boolean) => {
+      setValues((oldValues) => ({ ...oldValues, [name]: value }))
+    },
+    []
+  )
+
+  const handleOnChangeFilter = useCallback(() => {
+    onFilter(values)
+  }, [onFilter, values])
 
   return (
     <S.Wrapper>
@@ -47,6 +63,7 @@ const ExploreSidebar = ({ items, initialValues = {} }: ExploreSidebarProps) => {
                 label={field.label}
                 labelFor={field.name}
                 isChecked={!!values[field.name]}
+                onCheck={(value) => handleOnChangeValues(field.name, value)}
               />
             ))}
 
@@ -60,16 +77,17 @@ const ExploreSidebar = ({ items, initialValues = {} }: ExploreSidebarProps) => {
                 label={field.label}
                 labelFor={field.name}
                 defaultChecked={field.name === values[item.name]}
+                onChange={() => handleOnChangeValues(item.name, field.name)}
               />
             ))}
         </div>
       ))}
 
-      <Button fullWidth size="medium">
+      <Button fullWidth size="medium" onClick={handleOnChangeFilter}>
         Filter
       </Button>
     </S.Wrapper>
   )
 }
 
-export default ExploreSidebar
+export default memo(ExploreSidebar)
