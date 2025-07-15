@@ -119,4 +119,29 @@ describe('<ExploreSidebar />', () => {
       })
     })
   })
+
+  it('should open/close sidebar when filtering on mobile', async () => {
+    window.innerWidth = 500
+    window.dispatchEvent(new Event('resize'))
+
+    renderWithTheme(
+      <ExploreSidebar items={exploreSidebarItemsMock} onFilter={jest.fn} />
+    )
+
+    const overlay = screen.getByTestId('overlay')
+
+    expect(overlay).toHaveStyle('opacity: 0')
+
+    userEvent.click(screen.getByLabelText(/open filters/))
+
+    await waitFor(() => {
+      expect(overlay).toHaveStyle('opacity: 1')
+    })
+
+    userEvent.click(screen.getByLabelText(/close filters/))
+
+    await waitFor(() => {
+      expect(overlay).toHaveStyle('opacity: 0')
+    })
+  })
 })

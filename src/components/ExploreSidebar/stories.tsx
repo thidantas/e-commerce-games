@@ -13,13 +13,25 @@ export default {
   parameters: {
     backgrounds: {
       default: 'dark'
-    }
+    },
+    layout: 'fullscreen'
   }
 } as Meta
 
-export const Default: StoryObj<ExploreSidebarProps> = {}
+export const Default: StoryObj<ExploreSidebarProps> = {
+  render: (args) => (
+    <div style={{ padding: 16, maxWidth: 240 }}>
+      <ExploreSidebar {...args} />
+    </div>
+  )
+}
 
 export const WithInitialValues: StoryObj<ExploreSidebarProps> = {
+  render: (args) => (
+    <div style={{ padding: 16, maxWidth: 240 }}>
+      <ExploreSidebar {...args} />
+    </div>
+  ),
   args: {
     initialValues: {
       windows: true,
