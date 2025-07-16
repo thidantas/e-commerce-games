@@ -13,7 +13,7 @@ jest.mock('templates/Base', () => ({
   }
 }))
 
-jest.mock('components/ExploreSideBar', () => ({
+jest.mock('components/ExploreSidebar', () => ({
   __esModule: true,
   default: function Mock({ children }: { children: React.ReactNode }) {
     return <div data-testid="Mock ExploreSidebar">{children}</div>
