@@ -1,3 +1,5 @@
+'use client'
+
 import { memo, useCallback, useState } from 'react'
 import { Close, FilterList } from '@styled-icons/material-outlined'
 

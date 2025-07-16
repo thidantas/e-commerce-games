@@ -123,14 +123,14 @@ const wrapperModifiers = {
   `,
 
   close: (theme: DefaultTheme) => css`
+    display: flex;
+    justify-content: flex-end;
+
     ${IconWrapper} {
       color: ${theme.colors.white};
 
       > svg {
-        position: absolute;
         width: 2.4rem;
-        right: 0.8rem;
-        top: 0.8rem;
       }
 
       > svg:last-child {
