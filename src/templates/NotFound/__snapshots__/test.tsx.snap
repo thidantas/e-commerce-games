@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound should render a empty component 1`] = `
+.c6 {
+  cursor: pointer;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding: 0.8rem;
+  font-family: Poppins,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #FAFAFA;
+  background: linear-gradient(180deg,#ff5f5f 0%,#f062c0 50%);
+  border: 0;
+  border-radius: 0.4rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  padding: 0.8rem 3.2rem;
+}
+
+.c6:hover {
+  background: linear-gradient(180deg,#e35565 0%,#d958a6 50%);
+}
+
+.c2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+}
+
+.c3 {
+  max-width: 100%;
+}
+
+.c4 {
+  color: #F231A5;
+  font-size: 2.8rem;
+}
+
+.c5 {
+  color: #FAFAFA;
+  font-size: 1.8rem;
+  font-weight: 300;
+  margin-bottom: 3.2rem;
+}
+
+.c0 {
+  width: 100%;
+  max-width: 130rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: calc(3.2rem / 2);
+  padding-right: calc(3.2rem / 2);
+}
+
+.c1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+<div
+  class="c0 c1"
+>
+  <main
+    class="c2"
+  >
+    <img
+      alt="A gamer in a couch playing videogame"
+      class="c3"
+      role="image"
+      src="/img/empty.svg"
+    />
+    <h2
+      class="c4"
+    >
+      404: Not found
+    </h2>
+    <p
+      class="c5"
+    >
+      Ops... this page does not exist. Go back to the store and enjoy our game offers!
+    </p>
+    <a
+      href="/"
+    >
+      <button
+        class="c6"
+      >
+        <span>
+          Go back to store
+        </span>
+      </button>
+    </a>
+  </main>
+</div>
+`;
