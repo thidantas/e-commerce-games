@@ -5,7 +5,7 @@ import cartListMock from 'components/CartList/mock'
 import CartDropdown, { CartDropdownProps } from '.'
 
 export default {
-  title: 'components/CartDropdown',
+  title: 'components/Dropdowns/CartDropdown',
   component: CartDropdown,
   args: {
     items: cartListMock,
@@ -24,6 +24,16 @@ export const Default: StoryObj<CartDropdownProps> = {
       style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}
     >
       <CartDropdown {...args} />
+    </div>
+  )
+}
+
+export const EmptyCartDropdown: StoryObj<CartDropdownProps> = {
+  render: () => (
+    <div
+      style={{ maxWidth: '98%', display: 'flex', justifyContent: 'flex-end' }}
+    >
+      <CartDropdown />
     </div>
   )
 }
