@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import styled, { css, DefaultTheme } from 'styled-components'
 
 export const Wrapper = styled.article`
@@ -13,7 +14,7 @@ export const Wrapper = styled.article`
   `}
 `
 
-export const ImageBox = styled.div`
+export const ImageBox = styled(Link)`
   height: 14rem;
   width: 100%;
   background: #f6f7f8;
@@ -55,8 +56,9 @@ export const Content = styled.div`
   `}
 `
 
-export const Info = styled.div`
+export const Info = styled(Link)`
   max-width: calc(100% - 2.5rem);
+  text-decoration: none;
 `
 
 export const Title = styled.h3`
