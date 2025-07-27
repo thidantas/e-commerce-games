@@ -1,10 +1,14 @@
 import { notFound } from 'next/navigation'
 
-import Game from 'templates/Game'
+import { GetGameBySlug } from 'services/games/ssr/getGameBySlug'
+import Game, { GameTemplateProps } from 'templates/Game'
 import { GameDetailsProps } from 'components/GameDetails'
 import galleryMock from 'components/Gallery/mock'
 import highlightMock from 'components/Highlight/mock'
 import gameCardSliderItemsMock from 'components/GameCardSlider/mock'
+
+export const revalidate = 60
+export const dynamicParams = true
 
 type PageProps = {
   params?: {
@@ -45,29 +49,36 @@ const dataMock = {
       publisher: 'CD PROJEKT RED',
       rating: 'BR18',
       genres: ['Action', 'Role-playing']
-    } as GameDetailsProps,
-    upcomingGames: gameCardSliderItemsMock,
-    recommendedGames: gameCardSliderItemsMock,
-    upcomingHighlight: highlightMock
-  }
-}
-
-export const dynamicParams = true
-
-export async function generateStaticParams() {
-  return Object.keys(dataMock).map((slug) => ({
-    slug
-  }))
+    } as GameDetailsProps
+  },
+  upcomingGames: gameCardSliderItemsMock,
+  recommendedGames: gameCardSliderItemsMock,
+  upcomingHighlight: highlightMock
 }
 
 export default async function GamePage({ params }: PageProps) {
-  const slug = params?.slug
+  if (!params?.slug) return notFound()
 
-  const data = dataMock[slug as keyof typeof dataMock]
+  const isCI = process.env.CI === 'true'
+
+  let data: GameTemplateProps | null = null
+
+  if (isCI) {
+    data = dataMock.cyberpunk as GameTemplateProps
+  } else {
+    data = (await GetGameBySlug(params.slug)) as GameTemplateProps
+  }
 
   if (!data) {
     notFound()
   }
 
-  return <Game {...data} />
+  return (
+    <Game
+      {...(data as GameTemplateProps)}
+      upcomingGames={dataMock.upcomingGames}
+      recommendedGames={dataMock.recommendedGames}
+      upcomingHighlight={dataMock.upcomingHighlight}
+    />
+  )
 }

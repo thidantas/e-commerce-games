@@ -7,6 +7,7 @@ export default {
   component: GameCard,
   args: {
     img: '/img/borderlands-3-game-cover.png',
+    slug: 'borderlands-3',
     title: 'Borderlands 3',
     price: 'R$ 215,00',
     developer: 'Gearbox Software',

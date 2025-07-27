@@ -13,6 +13,7 @@ import * as S from './styles'
 
 export type GameCardProps = {
   img: string
+  slug: string
   title: string
   price: string
   developer: string
@@ -26,6 +27,7 @@ export type GameCardProps = {
 
 const GameCard = ({
   img,
+  slug,
   title,
   price,
   developer,
@@ -43,13 +45,13 @@ const GameCard = ({
       </Ribbon>
     )}
 
-    <S.ImageBox>
+    <S.ImageBox href={`/game/${slug}`}>
       {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img src={img} alt={title} />
     </S.ImageBox>
 
     <S.Content>
-      <S.Info>
+      <S.Info href={`/game/${slug}`}>
         <S.Title>{title}</S.Title>
         <S.Developer>{developer}</S.Developer>
       </S.Info>

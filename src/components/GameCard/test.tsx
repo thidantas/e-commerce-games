@@ -6,10 +6,11 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import GameCard from '.'
 
 const mockProps = {
+  slug: 'borderlands-3',
   title: 'Borderlands 3',
   developer: 'Gearbox Software',
   img: '/img/borderlands-3-game-cover.png',
-  price: 'R$ 215,00'
+  price: '$215.00'
 }
 
 describe('<GameCard />', () => {
@@ -29,6 +30,11 @@ describe('<GameCard />', () => {
       mockProps.img
     )
 
+    expect(screen.getByRole('link', { name: mockProps.title })).toHaveAttribute(
+      'href',
+      `/game/${mockProps.slug}`
+    )
+
     expect(screen.getByLabelText(/add to wishlist/i)).toBeInTheDocument()
   })
 
@@ -42,13 +48,13 @@ describe('<GameCard />', () => {
   })
 
   it('should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...mockProps} promotionalPrice="R$ 195,00" />)
+    renderWithTheme(<GameCard {...mockProps} promotionalPrice="$195.00" />)
 
-    expect(screen.getByText('R$ 215,00')).toHaveStyle({
+    expect(screen.getByText('$215.00')).toHaveStyle({
       textDecoration: 'line-through'
     })
 
-    expect(screen.getByText('R$ 195,00')).not.toHaveStyle({
+    expect(screen.getByText('$195.00')).not.toHaveStyle({
       textDecoration: 'line-through'
     })
   })

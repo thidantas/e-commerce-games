@@ -1,7 +1,8 @@
 import type { Metadata } from 'next'
 
-import { GlobalStylesProvider } from '@/providers/GlobalStyleProvider'
-import StyledComponentsRegistry from '@/lib/registry'
+import StyledComponentsRegistry from 'lib/StyledComponentsRegistry'
+import { ApolloProvider } from 'providers/ApolloProvider'
+import { GlobalStylesProvider } from 'providers/GlobalStylesProvider'
 
 export const metadata: Metadata = {
   title: 'Won Games',
@@ -16,9 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <StyledComponentsRegistry>
-          <GlobalStylesProvider>{children}</GlobalStylesProvider>
-        </StyledComponentsRegistry>
+        <ApolloProvider>
+          <StyledComponentsRegistry>
+            <GlobalStylesProvider>{children}</GlobalStylesProvider>
+          </StyledComponentsRegistry>
+        </ApolloProvider>
       </body>
     </html>
   )
