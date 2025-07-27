@@ -10,3 +10,7 @@ function getEnvVar(key: string): string {
 export function getLocalApiUrl() {
   return `http://${getEnvVar('LOCAL_HOST')}:${getEnvVar('LOCAL_PORT')}`
 }
+
+export const env = {
+  LOCAL_API_URL: getLocalApiUrl()
+}
