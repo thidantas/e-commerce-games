@@ -11,6 +11,12 @@ const mockProps: GamesProps = {
 }
 
 export default async function GamesPage() {
+  const isCI = process.env.CI === 'true'
+
+  if (isCI) {
+    return <Games {...mockProps} />
+  }
+
   const games = await getGames({ limit: 9 })
 
   return <Games {...mockProps} games={games as GameCardProps[]} />

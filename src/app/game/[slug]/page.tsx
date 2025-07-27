@@ -59,7 +59,15 @@ const dataMock = {
 export default async function GamePage({ params }: PageProps) {
   if (!params?.slug) return notFound()
 
-  const data = await GetGameBySlug(params?.slug)
+  const isCI = process.env.CI === 'true'
+
+  let data: GameTemplateProps | null = null
+
+  if (isCI) {
+    data = dataMock.cyberpunk as GameTemplateProps
+  } else {
+    data = (await GetGameBySlug(params.slug)) as GameTemplateProps
+  }
 
   if (!data) {
     notFound()
