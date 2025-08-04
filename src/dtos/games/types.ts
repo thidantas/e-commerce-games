@@ -1,16 +1,8 @@
-export type Game = {
-  img: string
-  slug: string
-  title: string
-  price: string
-  developer: string
-}
-
 export type GameDetails = {
-  cover?: string
+  cover: string
   gameInfo: {
     title: string
-    price: string
+    price: number
     description: string
   }
   gallery: Array<{
