@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 
-import { GetGameBySlug } from 'services/games/ssr/getGameBySlug'
+import { GetGameBySlug } from 'services/ssr/games/getGameBySlug'
 import Game, { GameTemplateProps } from 'templates/Game'
 import { GameDetailsProps } from 'components/GameDetails'
 import galleryMock from 'components/Gallery/mock'
 import highlightMock from 'components/Highlight/mock'
 import gameCardSliderItemsMock from 'components/GameCardSlider/mock'
+import { GameDetails } from 'dtos/games/types'
 
 export const revalidate = 60
 export const dynamicParams = true
@@ -36,7 +37,7 @@ const dataMock = {
       'https://images.gog-statics.com/5643a7c831df452d29005caeca24c28cdbfaa6fbea5a9556b147ee26d325fa70_bg_crop_1366x655.jpg',
     gameInfo: {
       title: 'Cyberpunk 2077',
-      price: '59.00',
+      price: 59.0,
       description:
         'Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. You play as V, a mercenary outlaw going after a one-of-a-kind implant that is the key to immortality'
     },
@@ -50,7 +51,7 @@ const dataMock = {
       rating: 'BR18',
       genres: ['Action', 'Role-playing']
     } as GameDetailsProps
-  },
+  } as GameDetails,
   upcomingGames: gameCardSliderItemsMock,
   recommendedGames: gameCardSliderItemsMock,
   upcomingHighlight: highlightMock
@@ -61,12 +62,12 @@ export default async function GamePage({ params }: PageProps) {
 
   const isCI = process.env.CI === 'true'
 
-  let data: GameTemplateProps | null = null
+  let data: GameDetails | null = null
 
   if (isCI) {
-    data = dataMock.cyberpunk as GameTemplateProps
+    data = dataMock.cyberpunk
   } else {
-    data = (await GetGameBySlug(params.slug)) as GameTemplateProps
+    data = await GetGameBySlug(params.slug)
   }
 
   if (!data) {
