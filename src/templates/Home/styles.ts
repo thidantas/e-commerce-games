@@ -4,7 +4,6 @@ import media from 'styled-media-query'
 import styled, { css } from 'styled-components'
 
 import * as HeadingStyles from 'components/Heading/styles'
-import * as HighlightStyles from 'components/Highlight/styles'
 
 export const SectionBanner = styled.section`
   ${({ theme }) => css`
@@ -41,14 +40,6 @@ export const SectionNews = styled.div`
       ${media.greaterThan('medium')`
         color: ${theme.colors.black};
       `}
-    }
-  `}
-`
-
-export const SectionUpcoming = styled.div`
-  ${({ theme }) => css`
-    ${HighlightStyles.Wrapper} {
-      margin-top: calc(${theme.spacings.xlarge} * 2);
     }
   `}
 `
