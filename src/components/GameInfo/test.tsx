@@ -6,7 +6,7 @@ import GameInfo from '.'
 
 const mockProps = {
   title: 'My Game Title',
-  price: '210.00',
+  price: 210.0,
   description: 'Game Description'
 }
 
@@ -17,7 +17,7 @@ describe('<GameInfo />', () => {
     expect(
       screen.getByRole('heading', { name: /my game title/i })
     ).toBeInTheDocument()
-    expect(screen.getByText(/210.00/i)).toBeInTheDocument()
+    expect(screen.getByText(/\$210.00/i)).toBeInTheDocument()
     expect(screen.getByText(/game description/i)).toBeInTheDocument()
     expect(container.firstChild).toMatchSnapshot()
   })

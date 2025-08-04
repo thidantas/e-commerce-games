@@ -8,6 +8,7 @@ import {
 
 import Button from 'components/Button'
 import Ribbon, { RibbonColors, RibbonSizes } from 'components/Ribbon'
+import formatPrice from 'utils/formatters/formatPrice'
 
 import * as S from './styles'
 
@@ -15,10 +16,10 @@ export type GameCardProps = {
   img: string
   slug: string
   title: string
-  price: string
+  price: number
   developer: string
   favorite?: boolean
-  promotionalPrice?: string
+  promotionalPrice?: number
   ribbonLabel?: string
   ribbonColor?: RibbonColors
   ribbonSize?: RibbonSizes
@@ -65,8 +66,10 @@ const GameCard = ({
       </S.FavButton>
 
       <S.BuyBox>
-        {!!promotionalPrice && <S.Price isPromotional>{price}</S.Price>}
-        <S.Price>{promotionalPrice || price}</S.Price>
+        {!!promotionalPrice && (
+          <S.Price isPromotional>{formatPrice(price)}</S.Price>
+        )}
+        <S.Price>{formatPrice(promotionalPrice || price)}</S.Price>
         <Button icon={<AddShoppingCart />} size="small" />
       </S.BuyBox>
     </S.Content>

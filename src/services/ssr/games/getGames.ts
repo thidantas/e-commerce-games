@@ -4,7 +4,7 @@ import {
 } from 'graphql/generated/graphql'
 import { getClient } from 'lib/ApolloClient'
 import { GET_GAMES } from 'graphql/queries/games/getGames'
-import { Game } from 'dtos/games/types'
+import { Game } from 'dtos/types'
 import { mapGamesDTO } from 'dtos/games/games.dto'
 
 export async function getGames(

@@ -1,4 +1,4 @@
-import { getGames } from 'services/games/ssr/getGames'
+import { getGames } from 'services/ssr/games/getGames'
 import { GameCardProps } from 'components/GameCard'
 import Games, { GamesProps } from 'templates/Games'
 import exploreSidebarItemsMock from 'components/ExploreSidebar/mock'

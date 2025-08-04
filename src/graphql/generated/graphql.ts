@@ -35,6 +35,48 @@ export type Scalars = {
   JSON: { input: Record<string, unknown>; output: Record<string, unknown> }
 }
 
+export type Banner = {
+  __typename?: 'Banner'
+  button?: Maybe<ComponentPageButton>
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  image: UploadFile
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  ribbon?: Maybe<ComponentPageRibbon>
+  subtitle: Scalars['String']['output']
+  title: Scalars['String']['output']
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type BannerEntityResponseCollection = {
+  __typename?: 'BannerEntityResponseCollection'
+  nodes: Array<Banner>
+  pageInfo: Pagination
+}
+
+export type BannerFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<BannerFiltersInput>>>
+  button?: InputMaybe<ComponentPageButtonFiltersInput>
+  createdAt?: InputMaybe<DateTimeFilterInput>
+  documentId?: InputMaybe<IdFilterInput>
+  not?: InputMaybe<BannerFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<BannerFiltersInput>>>
+  publishedAt?: InputMaybe<DateTimeFilterInput>
+  ribbon?: InputMaybe<ComponentPageRibbonFiltersInput>
+  subtitle?: InputMaybe<StringFilterInput>
+  title?: InputMaybe<StringFilterInput>
+  updatedAt?: InputMaybe<DateTimeFilterInput>
+}
+
+export type BannerInput = {
+  button?: InputMaybe<ComponentPageButtonInput>
+  image?: InputMaybe<Scalars['ID']['input']>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  ribbon?: InputMaybe<ComponentPageRibbonInput>
+  subtitle?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
 export type BooleanFilterInput = {
   and?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>
   between?: InputMaybe<Array<InputMaybe<Scalars['Boolean']['input']>>>
@@ -113,6 +155,115 @@ export type CategoryInput = {
 export type CategoryRelationResponseCollection = {
   __typename?: 'CategoryRelationResponseCollection'
   nodes: Array<Category>
+}
+
+export type ComponentPageButton = {
+  __typename?: 'ComponentPageButton'
+  id: Scalars['ID']['output']
+  label: Scalars['String']['output']
+  link: Scalars['String']['output']
+}
+
+export type ComponentPageButtonFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentPageButtonFiltersInput>>>
+  label?: InputMaybe<StringFilterInput>
+  link?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentPageButtonFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentPageButtonFiltersInput>>>
+}
+
+export type ComponentPageButtonInput = {
+  id?: InputMaybe<Scalars['ID']['input']>
+  label?: InputMaybe<Scalars['String']['input']>
+  link?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentPageHighlight = {
+  __typename?: 'ComponentPageHighlight'
+  alignment?: Maybe<Enum_Componentpagehighlight_Alignment>
+  background: UploadFile
+  buttonLabel: Scalars['String']['output']
+  buttonLink: Scalars['String']['output']
+  floatImage?: Maybe<UploadFile>
+  id: Scalars['ID']['output']
+  subtitle: Scalars['String']['output']
+  title: Scalars['String']['output']
+}
+
+export type ComponentPageHighlightInput = {
+  alignment?: InputMaybe<Enum_Componentpagehighlight_Alignment>
+  background?: InputMaybe<Scalars['ID']['input']>
+  buttonLabel?: InputMaybe<Scalars['String']['input']>
+  buttonLink?: InputMaybe<Scalars['String']['input']>
+  floatImage?: InputMaybe<Scalars['ID']['input']>
+  id?: InputMaybe<Scalars['ID']['input']>
+  subtitle?: InputMaybe<Scalars['String']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentPagePopularGames = {
+  __typename?: 'ComponentPagePopularGames'
+  games: Array<Maybe<Game>>
+  games_connection?: Maybe<GameRelationResponseCollection>
+  highlight?: Maybe<ComponentPageHighlight>
+  id: Scalars['ID']['output']
+  title: Scalars['String']['output']
+}
+
+export type ComponentPagePopularGamesGamesArgs = {
+  filters?: InputMaybe<GameFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentPagePopularGamesGames_ConnectionArgs = {
+  filters?: InputMaybe<GameFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+}
+
+export type ComponentPagePopularGamesInput = {
+  games?: InputMaybe<Array<InputMaybe<Scalars['ID']['input']>>>
+  highlight?: InputMaybe<ComponentPageHighlightInput>
+  id?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentPageRibbon = {
+  __typename?: 'ComponentPageRibbon'
+  color?: Maybe<Enum_Componentpageribbon_Color>
+  id: Scalars['ID']['output']
+  size?: Maybe<Enum_Componentpageribbon_Size>
+  text?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentPageRibbonFiltersInput = {
+  and?: InputMaybe<Array<InputMaybe<ComponentPageRibbonFiltersInput>>>
+  color?: InputMaybe<StringFilterInput>
+  not?: InputMaybe<ComponentPageRibbonFiltersInput>
+  or?: InputMaybe<Array<InputMaybe<ComponentPageRibbonFiltersInput>>>
+  size?: InputMaybe<StringFilterInput>
+  text?: InputMaybe<StringFilterInput>
+}
+
+export type ComponentPageRibbonInput = {
+  color?: InputMaybe<Enum_Componentpageribbon_Color>
+  id?: InputMaybe<Scalars['ID']['input']>
+  size?: InputMaybe<Enum_Componentpageribbon_Size>
+  text?: InputMaybe<Scalars['String']['input']>
+}
+
+export type ComponentPageSection = {
+  __typename?: 'ComponentPageSection'
+  highlight?: Maybe<ComponentPageHighlight>
+  id: Scalars['ID']['output']
+  title?: Maybe<Scalars['String']['output']>
+}
+
+export type ComponentPageSectionInput = {
+  highlight?: InputMaybe<ComponentPageHighlightInput>
+  id?: InputMaybe<Scalars['ID']['input']>
+  title?: InputMaybe<Scalars['String']['input']>
 }
 
 export type DateFilterInput = {
@@ -223,6 +374,21 @@ export type DeveloperInput = {
 export type DeveloperRelationResponseCollection = {
   __typename?: 'DeveloperRelationResponseCollection'
   nodes: Array<Developer>
+}
+
+export enum Enum_Componentpagehighlight_Alignment {
+  Left = 'left',
+  Right = 'right'
+}
+
+export enum Enum_Componentpageribbon_Color {
+  Primary = 'primary',
+  Secondary = 'secondary'
+}
+
+export enum Enum_Componentpageribbon_Size {
+  Normal = 'normal',
+  Small = 'small'
 }
 
 export enum Enum_Game_Rating {
@@ -388,9 +554,16 @@ export type GameRelationResponseCollection = {
 }
 
 export type GenericMorph =
+  | Banner
   | Category
+  | ComponentPageButton
+  | ComponentPageHighlight
+  | ComponentPagePopularGames
+  | ComponentPageRibbon
+  | ComponentPageSection
   | Developer
   | Game
+  | Home
   | I18NLocale
   | Platform
   | Publisher
@@ -400,6 +573,26 @@ export type GenericMorph =
   | UsersPermissionsPermission
   | UsersPermissionsRole
   | UsersPermissionsUser
+
+export type Home = {
+  __typename?: 'Home'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  freeGames?: Maybe<ComponentPageSection>
+  newGames?: Maybe<ComponentPageSection>
+  popularGames?: Maybe<ComponentPagePopularGames>
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  upcomingGames?: Maybe<ComponentPageSection>
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type HomeInput = {
+  freeGames?: InputMaybe<ComponentPageSectionInput>
+  newGames?: InputMaybe<ComponentPageSectionInput>
+  popularGames?: InputMaybe<ComponentPagePopularGamesInput>
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  upcomingGames?: InputMaybe<ComponentPageSectionInput>
+}
 
 export type I18NLocale = {
   __typename?: 'I18NLocale'
@@ -508,6 +701,7 @@ export type Mutation = {
   __typename?: 'Mutation'
   /** Change user password. Confirm with the current password. */
   changePassword?: Maybe<UsersPermissionsLoginPayload>
+  createBanner?: Maybe<Banner>
   createCategory?: Maybe<Category>
   createDeveloper?: Maybe<Developer>
   createGame?: Maybe<Game>
@@ -519,9 +713,11 @@ export type Mutation = {
   createUsersPermissionsRole?: Maybe<UsersPermissionsCreateRolePayload>
   /** Create a new user */
   createUsersPermissionsUser: UsersPermissionsUserEntityResponse
+  deleteBanner?: Maybe<DeleteMutationResponse>
   deleteCategory?: Maybe<DeleteMutationResponse>
   deleteDeveloper?: Maybe<DeleteMutationResponse>
   deleteGame?: Maybe<DeleteMutationResponse>
+  deleteHome?: Maybe<DeleteMutationResponse>
   deletePlatform?: Maybe<DeleteMutationResponse>
   deletePublisher?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>
@@ -540,9 +736,11 @@ export type Mutation = {
   register: UsersPermissionsLoginPayload
   /** Reset user password. Confirm with a code (resetToken from forgotPassword) */
   resetPassword?: Maybe<UsersPermissionsLoginPayload>
+  updateBanner?: Maybe<Banner>
   updateCategory?: Maybe<Category>
   updateDeveloper?: Maybe<Developer>
   updateGame?: Maybe<Game>
+  updateHome?: Maybe<Home>
   updatePlatform?: Maybe<Platform>
   updatePublisher?: Maybe<Publisher>
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
@@ -558,6 +756,11 @@ export type MutationChangePasswordArgs = {
   currentPassword: Scalars['String']['input']
   password: Scalars['String']['input']
   passwordConfirmation: Scalars['String']['input']
+}
+
+export type MutationCreateBannerArgs = {
+  data: BannerInput
+  status?: InputMaybe<PublicationStatus>
 }
 
 export type MutationCreateCategoryArgs = {
@@ -601,6 +804,10 @@ export type MutationCreateUsersPermissionsRoleArgs = {
 
 export type MutationCreateUsersPermissionsUserArgs = {
   data: UsersPermissionsUserInput
+}
+
+export type MutationDeleteBannerArgs = {
+  documentId: Scalars['ID']['input']
 }
 
 export type MutationDeleteCategoryArgs = {
@@ -665,6 +872,12 @@ export type MutationResetPasswordArgs = {
   passwordConfirmation: Scalars['String']['input']
 }
 
+export type MutationUpdateBannerArgs = {
+  data: BannerInput
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type MutationUpdateCategoryArgs = {
   data: CategoryInput
   documentId: Scalars['ID']['input']
@@ -680,6 +893,11 @@ export type MutationUpdateDeveloperArgs = {
 export type MutationUpdateGameArgs = {
   data: GameInput
   documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateHomeArgs = {
+  data: HomeInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -849,6 +1067,9 @@ export type PublisherInput = {
 
 export type Query = {
   __typename?: 'Query'
+  banner?: Maybe<Banner>
+  banners: Array<Maybe<Banner>>
+  banners_connection?: Maybe<BannerEntityResponseCollection>
   categories: Array<Maybe<Category>>
   categories_connection?: Maybe<CategoryEntityResponseCollection>
   category?: Maybe<Category>
@@ -858,6 +1079,7 @@ export type Query = {
   game?: Maybe<Game>
   games: Array<Maybe<Game>>
   games_connection?: Maybe<GameEntityResponseCollection>
+  home?: Maybe<Home>
   i18NLocale?: Maybe<I18NLocale>
   i18NLocales: Array<Maybe<I18NLocale>>
   i18NLocales_connection?: Maybe<I18NLocaleEntityResponseCollection>
@@ -883,6 +1105,25 @@ export type Query = {
   usersPermissionsUser?: Maybe<UsersPermissionsUser>
   usersPermissionsUsers: Array<Maybe<UsersPermissionsUser>>
   usersPermissionsUsers_connection?: Maybe<UsersPermissionsUserEntityResponseCollection>
+}
+
+export type QueryBannerArgs = {
+  documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryBannersArgs = {
+  filters?: InputMaybe<BannerFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryBanners_ConnectionArgs = {
+  filters?: InputMaybe<BannerFiltersInput>
+  pagination?: InputMaybe<PaginationArg>
+  sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
 }
 
 export type QueryCategoriesArgs = {
@@ -939,6 +1180,10 @@ export type QueryGames_ConnectionArgs = {
   filters?: InputMaybe<GameFiltersInput>
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type QueryHomeArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -1525,6 +1770,122 @@ export type GetGamesQuery = {
   } | null>
 }
 
+export type GetHomeQueryVariables = Exact<{
+  date: Scalars['Date']['input']
+}>
+
+export type GetHomeQuery = {
+  __typename?: 'Query'
+  banners: Array<{
+    __typename?: 'Banner'
+    title: string
+    subtitle: string
+    image: { __typename?: 'UploadFile'; url: string }
+    button?: {
+      __typename?: 'ComponentPageButton'
+      label: string
+      link: string
+    } | null
+    ribbon?: {
+      __typename?: 'ComponentPageRibbon'
+      text?: string | null
+      color?: Enum_Componentpageribbon_Color | null
+      size?: Enum_Componentpageribbon_Size | null
+    } | null
+  } | null>
+  newGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug?: string | null
+    price: number
+    cover?: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null>
+  } | null>
+  upcomingGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug?: string | null
+    price: number
+    cover?: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null>
+  } | null>
+  freeGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug?: string | null
+    price: number
+    cover?: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null>
+  } | null>
+  sections?: {
+    __typename?: 'Home'
+    newGames?: {
+      __typename?: 'ComponentPageSection'
+      title?: string | null
+      highlight?: {
+        __typename?: 'ComponentPageHighlight'
+        title: string
+        subtitle: string
+        buttonLabel: string
+        buttonLink: string
+        alignment?: Enum_Componentpagehighlight_Alignment | null
+        background: { __typename?: 'UploadFile'; url: string }
+        floatImage?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+    popularGames?: {
+      __typename?: 'ComponentPagePopularGames'
+      title: string
+      highlight?: {
+        __typename?: 'ComponentPageHighlight'
+        title: string
+        subtitle: string
+        buttonLabel: string
+        buttonLink: string
+        alignment?: Enum_Componentpagehighlight_Alignment | null
+        background: { __typename?: 'UploadFile'; url: string }
+        floatImage?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+      games: Array<{
+        __typename?: 'Game'
+        name: string
+        slug?: string | null
+        price: number
+        cover?: { __typename?: 'UploadFile'; url: string } | null
+        developers: Array<{ __typename?: 'Developer'; name: string } | null>
+      } | null>
+    } | null
+    upcomingGames?: {
+      __typename?: 'ComponentPageSection'
+      title?: string | null
+      highlight?: {
+        __typename?: 'ComponentPageHighlight'
+        title: string
+        subtitle: string
+        buttonLabel: string
+        buttonLink: string
+        alignment?: Enum_Componentpagehighlight_Alignment | null
+        background: { __typename?: 'UploadFile'; url: string }
+        floatImage?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+    freeGames?: {
+      __typename?: 'ComponentPageSection'
+      title?: string | null
+      highlight?: {
+        __typename?: 'ComponentPageHighlight'
+        title: string
+        subtitle: string
+        buttonLabel: string
+        buttonLink: string
+        alignment?: Enum_Componentpagehighlight_Alignment | null
+        background: { __typename?: 'UploadFile'; url: string }
+        floatImage?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+  } | null
+}
+
 export const GetGameBySlugDocument = {
   kind: 'Document',
   definitions: [
@@ -1751,3 +2112,664 @@ export const GetGamesDocument = {
     }
   ]
 } as unknown as DocumentNode<GetGamesQuery, GetGamesQueryVariables>
+export const GetHomeDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'getHome' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'date' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } }
+          }
+        }
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'banners' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'image' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } }
+                    ]
+                  }
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'subtitle' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'button' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'label' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'link' } }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'ribbon' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'text' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'color' } },
+                      { kind: 'Field', name: { kind: 'Name', value: 'size' } }
+                    ]
+                  }
+                }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'newGames' },
+            name: { kind: 'Name', value: 'games' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filters' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'release_date' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'lte' },
+                            value: {
+                              kind: 'Variable',
+                              name: { kind: 'Name', value: 'date' }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sort' },
+                value: {
+                  kind: 'ListValue',
+                  values: [
+                    {
+                      kind: 'StringValue',
+                      value: 'release_date:desc',
+                      block: false
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'pagination' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'limit' },
+                      value: { kind: 'IntValue', value: '8' }
+                    }
+                  ]
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'cover' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'developers' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } }
+                    ]
+                  }
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'price' } }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'upcomingGames' },
+            name: { kind: 'Name', value: 'games' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filters' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'release_date' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'gt' },
+                            value: {
+                              kind: 'Variable',
+                              name: { kind: 'Name', value: 'date' }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sort' },
+                value: {
+                  kind: 'ListValue',
+                  values: [
+                    {
+                      kind: 'StringValue',
+                      value: 'release_date:asc',
+                      block: false
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'pagination' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'limit' },
+                      value: { kind: 'IntValue', value: '8' }
+                    }
+                  ]
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'cover' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'developers' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } }
+                    ]
+                  }
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'price' } }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'freeGames' },
+            name: { kind: 'Name', value: 'games' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filters' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'price' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'eq' },
+                            value: { kind: 'IntValue', value: '0' }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sort' },
+                value: {
+                  kind: 'StringValue',
+                  value: 'release_date:desc',
+                  block: false
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'pagination' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'limit' },
+                      value: { kind: 'IntValue', value: '8' }
+                    }
+                  ]
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'cover' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'developers' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } }
+                    ]
+                  }
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'price' } }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'sections' },
+            name: { kind: 'Name', value: 'home' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'newGames' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'highlight' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'title' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'subtitle' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'background' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'floatImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLabel' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLink' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'alignment' }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'popularGames' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'highlight' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'title' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'subtitle' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'background' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'floatImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLabel' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLink' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'alignment' }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'games' },
+                        arguments: [
+                          {
+                            kind: 'Argument',
+                            name: { kind: 'Name', value: 'pagination' },
+                            value: {
+                              kind: 'ObjectValue',
+                              fields: [
+                                {
+                                  kind: 'ObjectField',
+                                  name: { kind: 'Name', value: 'limit' },
+                                  value: { kind: 'IntValue', value: '8' }
+                                }
+                              ]
+                            }
+                          }
+                        ],
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'name' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'slug' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'cover' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'developers' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'name' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'price' }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'upcomingGames' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'highlight' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'title' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'subtitle' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'background' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'floatImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLabel' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLink' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'alignment' }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'freeGames' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'highlight' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'title' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'subtitle' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'background' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'floatImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLabel' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLink' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'alignment' }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+} as unknown as DocumentNode<GetHomeQuery, GetHomeQueryVariables>
