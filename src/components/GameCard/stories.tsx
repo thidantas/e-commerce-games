@@ -9,9 +9,9 @@ export default {
     img: '/img/borderlands-3-game-cover.png',
     slug: 'borderlands-3',
     title: 'Borderlands 3',
-    price: 'R$ 215,00',
+    price: 215.0,
     developer: 'Gearbox Software',
-    promotionalPrice: 'R$ 200,00',
+    promotionalPrice: 200.0,
     favorite: false
   },
   argTypes: {

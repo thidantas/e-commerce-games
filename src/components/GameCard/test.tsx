@@ -10,7 +10,7 @@ const mockProps = {
   title: 'Borderlands 3',
   developer: 'Gearbox Software',
   img: '/img/borderlands-3-game-cover.png',
-  price: '$215.00'
+  price: 215.0
 }
 
 describe('<GameCard />', () => {
@@ -41,20 +41,23 @@ describe('<GameCard />', () => {
   it('should render price in label', () => {
     renderWithTheme(<GameCard {...mockProps} />)
 
-    const price = screen.getByText(mockProps.price)
+    const price = screen.getByText('$215.00')
 
     expect(price).not.toHaveStyle({ textDecoration: 'line-through' })
     expect(price).toHaveStyle({ backgroundColor: theme.colors.secondary })
   })
 
   it('should render a line-through in price when promotional', () => {
-    renderWithTheme(<GameCard {...mockProps} promotionalPrice="$195.00" />)
+    renderWithTheme(<GameCard {...mockProps} promotionalPrice={195.0} />)
 
-    expect(screen.getByText('$215.00')).toHaveStyle({
+    const price = screen.getByText('$215.00')
+    const promotionalPrice = screen.getByText('$195.00')
+
+    expect(price).toHaveStyle({
       textDecoration: 'line-through'
     })
 
-    expect(screen.getByText('$195.00')).not.toHaveStyle({
+    expect(promotionalPrice).not.toHaveStyle({
       textDecoration: 'line-through'
     })
   })
