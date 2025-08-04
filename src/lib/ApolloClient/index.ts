@@ -7,8 +7,8 @@ export const { getClient } = registerApolloClient(() => {
   return new ApolloClient({
     cache: new InMemoryCache(),
     link: new HttpLink({
-      uri: `${env.LOCAL_API_URL}/graphql`,
-      fetchOptions: { cache: 'force-cache' }
-    })
+      uri: `${env.LOCAL_API_URL}/graphql`
+    }),
+    ssrMode: typeof window === 'undefined'
   })
 })
