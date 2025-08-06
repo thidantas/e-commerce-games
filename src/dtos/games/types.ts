@@ -1,3 +1,5 @@
+import { Game, Highlight } from '../types'
+
 export type GameDetails = {
   cover: string
   gameInfo: {
@@ -18,4 +20,16 @@ export type GameDetails = {
     rating: string
     genres: Array<string | undefined>
   }
+}
+
+export type RecommendedGames = {
+  recommendedTitle: string
+  recommendedHighlight?: Highlight | null
+  recommendedGames?: Game[]
+}
+
+export type UpcomingGames = {
+  upcomingTitle: string
+  upcomingGames: Game[]
+  upcomingHighlight?: Highlight | null
 }

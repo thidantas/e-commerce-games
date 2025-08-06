@@ -9,7 +9,7 @@ export default {
   component: CartDropdown,
   args: {
     items: cartListMock,
-    total: 'R$ 400,00'
+    total: 400.0
   },
   parameters: {
     backgrounds: {
