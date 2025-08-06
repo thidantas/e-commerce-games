@@ -567,6 +567,7 @@ export type GenericMorph =
   | I18NLocale
   | Platform
   | Publisher
+  | Recommended
   | ReviewWorkflowsWorkflow
   | ReviewWorkflowsWorkflowStage
   | UploadFile
@@ -720,6 +721,7 @@ export type Mutation = {
   deleteHome?: Maybe<DeleteMutationResponse>
   deletePlatform?: Maybe<DeleteMutationResponse>
   deletePublisher?: Maybe<DeleteMutationResponse>
+  deleteRecommended?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflow?: Maybe<DeleteMutationResponse>
   deleteReviewWorkflowsWorkflowStage?: Maybe<DeleteMutationResponse>
   deleteUploadFile?: Maybe<UploadFile>
@@ -743,6 +745,7 @@ export type Mutation = {
   updateHome?: Maybe<Home>
   updatePlatform?: Maybe<Platform>
   updatePublisher?: Maybe<Publisher>
+  updateRecommended?: Maybe<Recommended>
   updateReviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   updateReviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
   updateUploadFile: UploadFile
@@ -910,6 +913,11 @@ export type MutationUpdatePlatformArgs = {
 export type MutationUpdatePublisherArgs = {
   data: PublisherInput
   documentId: Scalars['ID']['input']
+  status?: InputMaybe<PublicationStatus>
+}
+
+export type MutationUpdateRecommendedArgs = {
+  data: RecommendedInput
   status?: InputMaybe<PublicationStatus>
 }
 
@@ -1090,6 +1098,7 @@ export type Query = {
   publisher?: Maybe<Publisher>
   publishers: Array<Maybe<Publisher>>
   publishers_connection?: Maybe<PublisherEntityResponseCollection>
+  recommended?: Maybe<Recommended>
   reviewWorkflowsWorkflow?: Maybe<ReviewWorkflowsWorkflow>
   reviewWorkflowsWorkflowStage?: Maybe<ReviewWorkflowsWorkflowStage>
   reviewWorkflowsWorkflowStages: Array<Maybe<ReviewWorkflowsWorkflowStage>>
@@ -1244,6 +1253,10 @@ export type QueryPublishers_ConnectionArgs = {
   status?: InputMaybe<PublicationStatus>
 }
 
+export type QueryRecommendedArgs = {
+  status?: InputMaybe<PublicationStatus>
+}
+
 export type QueryReviewWorkflowsWorkflowArgs = {
   documentId: Scalars['ID']['input']
   status?: InputMaybe<PublicationStatus>
@@ -1337,6 +1350,20 @@ export type QueryUsersPermissionsUsers_ConnectionArgs = {
   pagination?: InputMaybe<PaginationArg>
   sort?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>
   status?: InputMaybe<PublicationStatus>
+}
+
+export type Recommended = {
+  __typename?: 'Recommended'
+  createdAt?: Maybe<Scalars['DateTime']['output']>
+  documentId: Scalars['ID']['output']
+  publishedAt?: Maybe<Scalars['DateTime']['output']>
+  section: ComponentPagePopularGames
+  updatedAt?: Maybe<Scalars['DateTime']['output']>
+}
+
+export type RecommendedInput = {
+  publishedAt?: InputMaybe<Scalars['DateTime']['input']>
+  section?: InputMaybe<ComponentPagePopularGamesInput>
 }
 
 export type ReviewWorkflowsWorkflow = {
@@ -1770,6 +1797,69 @@ export type GetGamesQuery = {
   } | null>
 }
 
+export type GetRecommendedGamesQueryVariables = Exact<{ [key: string]: never }>
+
+export type GetRecommendedGamesQuery = {
+  __typename?: 'Query'
+  recommended?: {
+    __typename?: 'Recommended'
+    section: {
+      __typename?: 'ComponentPagePopularGames'
+      title: string
+      highlight?: {
+        __typename?: 'ComponentPageHighlight'
+        title: string
+        subtitle: string
+        buttonLabel: string
+        buttonLink: string
+        background: { __typename?: 'UploadFile'; url: string }
+        floatImage?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+      games: Array<{
+        __typename?: 'Game'
+        name: string
+        slug?: string | null
+        price: number
+        cover?: { __typename?: 'UploadFile'; url: string } | null
+        developers: Array<{ __typename?: 'Developer'; name: string } | null>
+      } | null>
+    }
+  } | null
+}
+
+export type GetUpcomingGamesQueryVariables = Exact<{
+  date: Scalars['Date']['input']
+}>
+
+export type GetUpcomingGamesQuery = {
+  __typename?: 'Query'
+  upcomingGames: Array<{
+    __typename?: 'Game'
+    name: string
+    slug?: string | null
+    price: number
+    cover?: { __typename?: 'UploadFile'; url: string } | null
+    developers: Array<{ __typename?: 'Developer'; name: string } | null>
+  } | null>
+  showcase?: {
+    __typename?: 'Home'
+    upcomingGames?: {
+      __typename?: 'ComponentPageSection'
+      title?: string | null
+      highlight?: {
+        __typename?: 'ComponentPageHighlight'
+        title: string
+        subtitle: string
+        buttonLabel: string
+        buttonLink: string
+        alignment?: Enum_Componentpagehighlight_Alignment | null
+        background: { __typename?: 'UploadFile'; url: string }
+        floatImage?: { __typename?: 'UploadFile'; url: string } | null
+      } | null
+    } | null
+  } | null
+}
+
 export type GetHomeQueryVariables = Exact<{
   date: Scalars['Date']['input']
 }>
@@ -2112,6 +2202,333 @@ export const GetGamesDocument = {
     }
   ]
 } as unknown as DocumentNode<GetGamesQuery, GetGamesQueryVariables>
+export const GetRecommendedGamesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'GetRecommendedGames' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'recommended' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'section' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'highlight' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'title' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'subtitle' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'background' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'floatImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLabel' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLink' }
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'games' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'name' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'slug' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'cover' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'developers' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'name' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'price' }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+} as unknown as DocumentNode<
+  GetRecommendedGamesQuery,
+  GetRecommendedGamesQueryVariables
+>
+export const GetUpcomingGamesDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'getUpcomingGames' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: { kind: 'Variable', name: { kind: 'Name', value: 'date' } },
+          type: {
+            kind: 'NonNullType',
+            type: { kind: 'NamedType', name: { kind: 'Name', value: 'Date' } }
+          }
+        }
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'upcomingGames' },
+            name: { kind: 'Name', value: 'games' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'filters' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'release_date' },
+                      value: {
+                        kind: 'ObjectValue',
+                        fields: [
+                          {
+                            kind: 'ObjectField',
+                            name: { kind: 'Name', value: 'gt' },
+                            value: {
+                              kind: 'Variable',
+                              name: { kind: 'Name', value: 'date' }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'sort' },
+                value: {
+                  kind: 'ListValue',
+                  values: [
+                    {
+                      kind: 'StringValue',
+                      value: 'release_date:asc',
+                      block: false
+                    }
+                  ]
+                }
+              },
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'pagination' },
+                value: {
+                  kind: 'ObjectValue',
+                  fields: [
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'limit' },
+                      value: { kind: 'IntValue', value: '8' }
+                    }
+                  ]
+                }
+              }
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'slug' } },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'cover' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'url' } }
+                    ]
+                  }
+                },
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'developers' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'name' } }
+                    ]
+                  }
+                },
+                { kind: 'Field', name: { kind: 'Name', value: 'price' } }
+              ]
+            }
+          },
+          {
+            kind: 'Field',
+            alias: { kind: 'Name', value: 'showcase' },
+            name: { kind: 'Name', value: 'home' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                {
+                  kind: 'Field',
+                  name: { kind: 'Name', value: 'upcomingGames' },
+                  selectionSet: {
+                    kind: 'SelectionSet',
+                    selections: [
+                      { kind: 'Field', name: { kind: 'Name', value: 'title' } },
+                      {
+                        kind: 'Field',
+                        name: { kind: 'Name', value: 'highlight' },
+                        selectionSet: {
+                          kind: 'SelectionSet',
+                          selections: [
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'title' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'subtitle' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'background' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'floatImage' },
+                              selectionSet: {
+                                kind: 'SelectionSet',
+                                selections: [
+                                  {
+                                    kind: 'Field',
+                                    name: { kind: 'Name', value: 'url' }
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLabel' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'buttonLink' }
+                            },
+                            {
+                              kind: 'Field',
+                              name: { kind: 'Name', value: 'alignment' }
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  ]
+} as unknown as DocumentNode<
+  GetUpcomingGamesQuery,
+  GetUpcomingGamesQueryVariables
+>
 export const GetHomeDocument = {
   kind: 'Document',
   definitions: [
