@@ -7,7 +7,7 @@ import GameItem, { GameItemProps } from '.'
 const mockProps: GameItemProps = {
   img: 'img/halo-4.jpg',
   title: 'Halo 4',
-  price: 'R$ 200,00'
+  price: 200.0
 }
 
 describe('<GameItem />', () => {
@@ -21,7 +21,7 @@ describe('<GameItem />', () => {
       mockProps.img
     )
 
-    expect(screen.getByText(/R\$ 200,00/i)).toBeInTheDocument()
+    expect(screen.getByText(/\$200\.00/i)).toBeInTheDocument()
   })
 
   it('should render the item with download link', () => {

@@ -8,7 +8,7 @@ export default {
   args: {
     img: 'img/halo-4.jpg',
     title: 'Halo 4',
-    price: 'R$ 200,00'
+    price: 200.0
   }
 } as Meta
 

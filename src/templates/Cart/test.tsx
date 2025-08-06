@@ -10,7 +10,7 @@ import Cart from '.'
 
 const mockProps = {
   cards: paymentCardOptionsMock,
-  total: '$ 400,00',
+  total: 400.0,
   items: cartListMock,
   recommendedGames: gameCardSliderItemsMock.slice(0, 5),
   recommendedHighlight: highlightMock

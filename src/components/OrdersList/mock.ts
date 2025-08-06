@@ -4,7 +4,7 @@ const orderListMock: GameItemProps[] = [
   {
     img: '/img/red-dead-img.jpg',
     title: 'Red Dead Redemption 2',
-    price: 'R$ 215,00',
+    price: 215.0,
     downloadLink: '',
     paymentInfo: {
       flag: 'mastercard',
@@ -16,7 +16,7 @@ const orderListMock: GameItemProps[] = [
   {
     img: '/img/halo-4.jpg',
     title: 'Halo 4',
-    price: 'R$ 200,00',
+    price: 200.0,
     downloadLink: '/',
     paymentInfo: {
       flag: 'visa',
