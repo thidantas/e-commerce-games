@@ -1,12 +1,15 @@
 import { notFound } from 'next/navigation'
 
 import { GetGameBySlug } from 'services/ssr/games/getGameBySlug'
+import { getUpcomingGames } from 'services/ssr/games/getUpcomingGames'
+import { getRecommendedGames } from 'services/ssr/games/getRecommendedGames'
+import { GameDetails } from 'dtos/games/types'
 import Game, { GameTemplateProps } from 'templates/Game'
+import { HighlightProps } from 'components/Highlight'
 import { GameDetailsProps } from 'components/GameDetails'
 import galleryMock from 'components/Gallery/mock'
 import highlightMock from 'components/Highlight/mock'
 import gameCardSliderItemsMock from 'components/GameCardSlider/mock'
-import { GameDetails } from 'dtos/games/types'
 
 export const revalidate = 60
 export const dynamicParams = true
@@ -70,16 +73,22 @@ export default async function GamePage({ params }: PageProps) {
     data = await GetGameBySlug(params.slug)
   }
 
-  if (!data) {
+  if (!data || data === null) {
     notFound()
   }
+
+  const recommended = await getRecommendedGames()
+
+  const upcoming = await getUpcomingGames()
 
   return (
     <Game
       {...(data as GameTemplateProps)}
-      upcomingGames={dataMock.upcomingGames}
-      recommendedGames={dataMock.recommendedGames}
-      upcomingHighlight={dataMock.upcomingHighlight}
+      upcomingGames={upcoming?.upcomingGames}
+      recommendedTitle={recommended?.recommendedTitle}
+      recommendedGames={recommended?.recommendedGames}
+      upcomingTitle={upcoming?.upcomingTitle}
+      upcomingHighlight={upcoming?.upcomingHighlight as HighlightProps}
     />
   )
 }

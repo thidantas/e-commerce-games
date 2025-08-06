@@ -1,6 +1,8 @@
+import { getRecommendedGames } from 'services/ssr/games/getRecommendedGames'
+import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
+import { HighlightProps } from 'components/Highlight'
 import highlightMock from 'components/Highlight/mock'
 import gameCardSliderItemsMock from 'components/GameCardSlider/mock'
-import Wishlist, { WishlistTemplateProps } from 'templates/Wishlist'
 
 const mockProps: WishlistTemplateProps = {
   games: gameCardSliderItemsMock,
@@ -9,5 +11,18 @@ const mockProps: WishlistTemplateProps = {
 }
 
 export default async function WishlistPage() {
-  return <Wishlist {...mockProps} />
+  const isCI = process.env.CI === 'true'
+
+  if (isCI) {
+    return <Wishlist {...mockProps} />
+  }
+  const recommended = await getRecommendedGames()
+
+  return (
+    <Wishlist
+      recommendedTitle={recommended?.recommendedTitle}
+      recommendedGames={recommended?.recommendedGames}
+      recommendedHighlight={recommended?.recommendedHighlight as HighlightProps}
+    />
+  )
 }
