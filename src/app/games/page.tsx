@@ -15,12 +15,20 @@ const mockProps: GamesProps = {
 export default async function GamesPage() {
   const isCI = process.env.CI === 'true'
 
-  if (isCI) {
-    return <Games {...mockProps} />
-  }
+  if (isCI) return <Games {...mockProps} />
+
   const apolloClient = makeClient()
 
-  const games = await getGames(apolloClient, { limit: 15 })
+  let games: GameCardProps[] = []
+
+  try {
+    const fetchedGames = await getGames(apolloClient, { limit: 15 })
+    games = fetchedGames as GameCardProps[]
+  } catch (err) {
+    console.error('Failed to fetch games:', err)
+
+    games = []
+  }
 
   const initialApolloState = JSON.parse(JSON.stringify(apolloClient.extract()))
 
