@@ -1,16 +1,17 @@
-import { getClient } from 'lib/ApolloClient'
 import {
   GetUpcomingGamesQuery,
   GetUpcomingGamesQueryVariables
 } from 'graphql/generated/graphql'
 import { GET_UPCOMING_GAMES } from 'graphql/queries/games/getUpcomingGames'
+import makeClient from 'providers/ApolloProvider/client'
 import { QUERY_PARAMS } from 'constants/queryParams'
 import { UpcomingGames } from 'dtos/games/types'
 import { mapUpcomingGamesDTO } from 'dtos/games/upcoming.dto'
 
 export async function getUpcomingGames(): Promise<UpcomingGames | null> {
   try {
-    const { data } = await getClient().query<
+    const client = makeClient()
+    const { data } = await client.query<
       GetUpcomingGamesQuery,
       GetUpcomingGamesQueryVariables
     >({
