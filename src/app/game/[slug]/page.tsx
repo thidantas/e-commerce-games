@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 
-import { GetGameBySlug } from 'services/ssr/games/getGameBySlug'
+import { getGameBySlug } from 'services/ssr/games/getGameBySlug'
 import { getUpcomingGames } from 'services/ssr/games/getUpcomingGames'
 import { getRecommendedGames } from 'services/ssr/games/getRecommendedGames'
 import { GameDetails } from 'dtos/games/types'
@@ -70,7 +70,7 @@ export default async function GamePage({ params }: PageProps) {
   if (isCI) {
     data = dataMock.cyberpunk
   } else {
-    data = await GetGameBySlug(params.slug)
+    data = await getGameBySlug(params.slug)
   }
 
   if (!data || data === null) {

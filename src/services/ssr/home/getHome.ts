@@ -1,16 +1,14 @@
 import { GetHomeQuery, GetHomeQueryVariables } from 'graphql/generated/graphql'
-import { getClient } from 'lib/ApolloClient'
 import { GET_HOME } from 'graphql/queries/home/getHome'
+import makeClient from 'providers/ApolloProvider/client'
 import { Home } from 'dtos/home/types'
 import { mapHomeDTO } from 'dtos/home/home.dto'
 import { QUERY_PARAMS } from 'constants/queryParams'
 
 export async function getHome(): Promise<Home | null> {
   try {
-    const { data } = await getClient().query<
-      GetHomeQuery,
-      GetHomeQueryVariables
-    >({
+    const client = makeClient()
+    const { data } = await client.query<GetHomeQuery, GetHomeQueryVariables>({
       query: GET_HOME,
       variables: {
         date: QUERY_PARAMS.DATE.MOCKED_TODAY

@@ -3,7 +3,7 @@ import { CodegenConfig } from '@graphql-codegen/cli'
 import { env } from './src/lib/config/env'
 
 const config: CodegenConfig = {
-  schema: `${env.LOCAL_API_URL}/graphql`,
+  schema: `${env.BASE_API_URL}/graphql`,
   documents: ['src/**/*.{ts,tsx}'],
   generates: {
     './src/graphql/generated/': {

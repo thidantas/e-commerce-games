@@ -24,7 +24,7 @@ export const gamesMapper = (games: GamesSection) => {
           title: game.name,
           developer: developer?.name ?? 'Unknown developer',
           img: game?.cover
-            ? `${env.LOCAL_API_URL}${game.cover?.url}`
+            ? `${env.BASE_API_URL}${game.cover?.url}`
             : '/img/borderlands-3-game-cover.png',
           price: game.price
         }

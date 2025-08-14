@@ -1,11 +1,12 @@
-import { getClient } from 'lib/ApolloClient'
 import { GET_GAME_BY_SLUG } from 'graphql/queries/games/getGameBySlug'
+import makeClient from 'providers/ApolloProvider/client'
 import { GameDetails } from 'dtos/games/types'
 import { mapGameDetailsDTO } from 'dtos/games/game.dto'
 
-export async function GetGameBySlug(slug: string): Promise<GameDetails | null> {
+export async function getGameBySlug(slug: string): Promise<GameDetails | null> {
   try {
-    const { data } = await getClient().query({
+    const client = makeClient()
+    const { data } = await client.query({
       query: GET_GAME_BY_SLUG,
       variables: { slug }
     })

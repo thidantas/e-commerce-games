@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 
 import StyledComponentsRegistry from 'lib/StyledComponentsRegistry'
-import { ApolloProvider } from 'providers/ApolloProvider'
 import { GlobalStylesProvider } from 'providers/GlobalStylesProvider'
 
 export const metadata: Metadata = {
@@ -17,11 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ApolloProvider>
-          <StyledComponentsRegistry>
-            <GlobalStylesProvider>{children}</GlobalStylesProvider>
-          </StyledComponentsRegistry>
-        </ApolloProvider>
+        <StyledComponentsRegistry>
+          <GlobalStylesProvider>{children}</GlobalStylesProvider>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )

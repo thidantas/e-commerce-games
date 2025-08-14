@@ -4,7 +4,7 @@ import { GetGameBySlugQuery } from 'graphql/generated/graphql'
 export const gameDetailsMapper = (game: GetGameBySlugQuery['games'][0]) => {
   return {
     cover: game?.cover?.src
-      ? `${env.LOCAL_API_URL}${game?.cover?.src}`
+      ? `${env.BASE_API_URL}${game?.cover?.src}`
       : '/img/borderlands-3-game-cover.png',
     gameInfo: {
       title: game?.name || '',
@@ -13,7 +13,7 @@ export const gameDetailsMapper = (game: GetGameBySlugQuery['games'][0]) => {
     },
     gallery:
       game?.gallery?.map((image) => ({
-        src: `${env.LOCAL_API_URL}${image?.src}`,
+        src: `${env.BASE_API_URL}${image?.src}`,
         label: image?.label || ''
       })) || [],
     description: game?.description || '',

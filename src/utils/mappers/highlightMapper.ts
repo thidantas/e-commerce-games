@@ -16,9 +16,9 @@ export const highlightMapper = (
       subtitle: highlight.subtitle ?? '',
       buttonLabel: highlight.buttonLabel ?? '',
       buttonLink: highlight.buttonLink ?? '',
-      backgroundImage: `${env.LOCAL_API_URL}${highlight.background.url}`,
+      backgroundImage: `${env.BASE_API_URL}${highlight.background.url}`,
       floatImage: highlight.floatImage
-        ? `${env.LOCAL_API_URL}${highlight.floatImage.url}`
+        ? `${env.BASE_API_URL}${highlight.floatImage.url}`
         : null
     }
   )
