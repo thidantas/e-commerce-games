@@ -1,7 +1,9 @@
+import makeClient from 'providers/ApolloProvider/client'
+import { ApolloProvider } from 'providers/ApolloProvider'
 import { getGames } from 'services/ssr/games/getGames'
-import { GameCardProps } from 'components/GameCard'
 import Games, { GamesProps } from 'templates/Games'
 import exploreSidebarItemsMock from 'components/ExploreSidebar/mock'
+import { GameCardProps } from 'components/GameCard'
 
 export const revalidate = 60
 
@@ -16,8 +18,15 @@ export default async function GamesPage() {
   if (isCI) {
     return <Games {...mockProps} />
   }
+  const apolloClient = makeClient()
 
-  const games = await getGames({ limit: 9 })
+  const games = await getGames(apolloClient, { limit: 15 })
 
-  return <Games {...mockProps} games={games as GameCardProps[]} />
+  const initialApolloState = JSON.parse(JSON.stringify(apolloClient.extract()))
+
+  return (
+    <ApolloProvider initialState={initialApolloState}>
+      <Games {...mockProps} games={games as GameCardProps[]} />
+    </ApolloProvider>
+  )
 }
