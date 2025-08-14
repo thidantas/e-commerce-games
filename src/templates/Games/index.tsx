@@ -21,9 +21,7 @@ const Games = ({ games, filterItems }: GamesProps) => {
     loading,
     error,
     handleFetchMore: fetchMore
-  } = useGames({
-    limit: 15
-  })
+  } = useGames({ limit: 15 })
 
   const handleOnFilter = () => {
     // TODO: add filter logic

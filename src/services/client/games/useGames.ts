@@ -9,11 +9,27 @@ import {
 } from 'graphql/generated/graphql'
 import { mapGamesDTO } from 'dtos/games/games.dto'
 
-export const useGames = (variables?: GetGamesQueryVariables) => {
+export const useGames = ({ limit }: GetGamesQueryVariables) => {
+  const isCI = process.env.NEXT_PUBLIC_CI === 'true'
+
   const { data, loading, error, fetchMore } = useQuery<
     GetGamesQuery,
     GetGamesQueryVariables
-  >(GET_GAMES, { variables })
+  >(GET_GAMES, {
+    variables: {
+      limit
+    },
+    skip: isCI
+  })
+
+  if (isCI) {
+    return {
+      data: [],
+      error: null,
+      loading: true,
+      handleFetchMore: () => {}
+    }
+  }
 
   const gamesDTO = data?.games ?? []
 

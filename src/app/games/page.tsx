@@ -13,20 +13,19 @@ const mockProps: GamesProps = {
 }
 
 export default async function GamesPage() {
-  const isCI = process.env.CI === 'true'
+  const isCI = process.env.NEXT_PUBLIC_CI === 'true'
 
-  if (isCI) {
-    return <Games {...mockProps} />
-  }
+  if (isCI) return <Games {...mockProps} />
+
   const apolloClient = makeClient()
 
-  const games = await getGames(apolloClient, { limit: 15 })
+  const fetchedGames = await getGames(apolloClient, { limit: 15 })
 
   const initialApolloState = JSON.parse(JSON.stringify(apolloClient.extract()))
 
   return (
     <ApolloProvider initialState={initialApolloState}>
-      <Games {...mockProps} games={games as GameCardProps[]} />
+      <Games {...mockProps} games={fetchedGames as GameCardProps[]} />
     </ApolloProvider>
   )
 }
