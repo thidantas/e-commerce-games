@@ -1783,6 +1783,7 @@ export type GetGameBySlugQuery = {
 
 export type GetGamesQueryVariables = Exact<{
   limit: Scalars['Int']['input']
+  start?: InputMaybe<Scalars['Int']['input']>
 }>
 
 export type GetGamesQuery = {
@@ -2141,6 +2142,14 @@ export const GetGamesDocument = {
             kind: 'NonNullType',
             type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } }
           }
+        },
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'start' }
+          },
+          type: { kind: 'NamedType', name: { kind: 'Name', value: 'Int' } }
         }
       ],
       selectionSet: {
@@ -2162,6 +2171,14 @@ export const GetGamesDocument = {
                       value: {
                         kind: 'Variable',
                         name: { kind: 'Name', value: 'limit' }
+                      }
+                    },
+                    {
+                      kind: 'ObjectField',
+                      name: { kind: 'Name', value: 'start' },
+                      value: {
+                        kind: 'Variable',
+                        name: { kind: 'Name', value: 'start' }
                       }
                     }
                   ]

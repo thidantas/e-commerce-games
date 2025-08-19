@@ -6,7 +6,7 @@ export const bannerMapper = (banners: GetHomeQuery['banners']) => {
     .filter((banner): banner is NonNullable<typeof banner> => banner !== null)
     .map((banner) => {
       return {
-        img: `${env.LOCAL_API_URL}${banner.image.url}`,
+        img: `${env.BASE_API_URL}${banner.image.url}`,
         title: banner.title,
         subtitle: banner.subtitle,
         buttonLabel: banner.button?.label,

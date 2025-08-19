@@ -1,9 +1,22 @@
 'use client'
 
-import { ApolloProvider as Provider } from '@apollo/client'
+import { useMemo } from 'react'
+import {
+  NormalizedCacheObject,
+  ApolloProvider as BaseApolloProvider
+} from '@apollo/client'
+import makeClient from './client'
 
-import { apolloClient } from './client'
+export type ApolloProviderProps = {
+  children: React.ReactNode
+  initialState?: NormalizedCacheObject
+}
 
-export const ApolloProvider = ({ children }: { children: React.ReactNode }) => {
-  return <Provider client={apolloClient}>{children}</Provider>
+export const ApolloProvider = ({
+  children,
+  initialState
+}: ApolloProviderProps) => {
+  const client = useMemo(() => makeClient(initialState), [initialState])
+
+  return <BaseApolloProvider client={client}>{children}</BaseApolloProvider>
 }
