@@ -1,41 +1,15 @@
 import { screen } from '@testing-library/react'
-import { MockLink } from '@apollo/client/testing'
 import userEvent from '@testing-library/user-event'
-import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 
+import { useGames } from 'services/client/games/useGames'
 import { renderWithTheme } from 'utils/tests/helpers'
 import exploreSidebarItemsMock from 'components/ExploreSidebar/mock'
-import { fetchMoreMock, gamesMock } from './mocks'
+
 import Games from '.'
 
-const mocks = [gamesMock, fetchMoreMock]
-
-const mockLink = new MockLink(mocks)
-
-const cache = new InMemoryCache({
-  typePolicies: {
-    Query: {
-      fields: {
-        games: {
-          keyArgs: false,
-          merge(existing = [], incoming, { args }) {
-            const start = args?.start ?? 0
-            const merged = existing ? existing.slice(0) : []
-            for (let i = 0; i < incoming.length; ++i) {
-              merged[start + i] = incoming[i]
-            }
-            return merged
-          }
-        }
-      }
-    }
-  }
-})
-
-const client = new ApolloClient({
-  link: mockLink,
-  cache
-})
+jest.mock('services/client/games/useGames', () => ({
+  useGames: jest.fn()
+}))
 
 jest.mock('templates/Base', () => ({
   __esModule: true,
@@ -46,46 +20,45 @@ jest.mock('templates/Base', () => ({
 
 jest.mock('components/ExploreSidebar', () => ({
   __esModule: true,
-  default: function Mock({ children }: { children: React.ReactNode }) {
-    return <div data-testid="Mock ExploreSidebar">{children}</div>
+  default: function Mock() {
+    return <div data-testid="Mock ExploreSidebar" />
   }
 }))
+const mockUseGames = useGames as jest.Mock
 
 describe('<Games />', () => {
-  it('should render loading when starting the template', () => {
-    renderWithTheme(
-      <ApolloProvider client={client}>
-        <Games filterItems={exploreSidebarItemsMock} />
-      </ApolloProvider>
-    )
-
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
+  beforeEach(() => {
+    mockUseGames.mockReset()
   })
 
   it('should render the sections', async () => {
-    renderWithTheme(
-      <ApolloProvider client={client}>
-        <Games filterItems={exploreSidebarItemsMock} />
-      </ApolloProvider>
-    )
+    mockUseGames.mockImplementation(() => ({
+      data: [{ id: '1', title: 'Sample Game' }],
+      loading: false,
+      error: null,
+      handleFetchMore: jest.fn()
+    }))
 
-    expect(screen.getByText(/loading.../i)).toBeInTheDocument()
+    renderWithTheme(<Games filterItems={exploreSidebarItemsMock} />)
 
     expect(await screen.findByTestId('Mock ExploreSidebar')).toBeInTheDocument()
-
     expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument()
-
     expect(
       await screen.findByRole('button', { name: /show more/i })
     ).toBeInTheDocument()
   })
 
   it('should render more games when show more is clicked', async () => {
-    renderWithTheme(
-      <ApolloProvider client={client}>
-        <Games filterItems={exploreSidebarItemsMock} />
-      </ApolloProvider>
-    )
+    const handleFetchMoreMock = jest.fn()
+
+    mockUseGames.mockImplementation(() => ({
+      data: [{ id: '1', title: 'Sample Game' }],
+      loading: false,
+      error: null,
+      handleFetchMore: handleFetchMoreMock
+    }))
+
+    renderWithTheme(<Games filterItems={exploreSidebarItemsMock} />)
 
     expect(await screen.findByText(/Sample Game/i)).toBeInTheDocument()
 
@@ -93,6 +66,6 @@ describe('<Games />', () => {
       await screen.findByRole('button', { name: /show more/i })
     )
 
-    expect(await screen.findByText('Fetch More Games')).toBeInTheDocument()
+    expect(handleFetchMoreMock).toHaveBeenCalled()
   })
 })

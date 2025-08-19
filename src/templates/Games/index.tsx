@@ -20,15 +20,11 @@ const Games = ({ games, filterItems }: GamesProps) => {
     data: gamesData,
     loading,
     error,
-    handleFetchMore: fetchMore
+    handleFetchMore
   } = useGames({ limit: 15 })
 
   const handleOnFilter = () => {
     // TODO: add filter logic
-  }
-
-  const handleOnShowMore = () => {
-    fetchMore()
   }
 
   return (
@@ -46,7 +42,7 @@ const Games = ({ games, filterItems }: GamesProps) => {
               ))}
             </Grid>
 
-            <S.ShowMore role="button" onClick={handleOnShowMore}>
+            <S.ShowMore role="button" onClick={handleFetchMore}>
               <p>Show More</p>
               <ArrowDown size={35} />
             </S.ShowMore>

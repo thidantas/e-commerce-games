@@ -15,7 +15,13 @@ const mockProps: GamesProps = {
 export default async function GamesPage() {
   const isCI = process.env.NEXT_PUBLIC_CI === 'true'
 
-  if (isCI) return <Games {...mockProps} />
+  if (isCI) {
+    return (
+      <ApolloProvider initialState={{}}>
+        <Games {...mockProps} />
+      </ApolloProvider>
+    )
+  }
 
   const apolloClient = makeClient()
 
